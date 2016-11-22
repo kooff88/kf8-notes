@@ -1,0 +1,22 @@
+1. sudo touch /etc/my.cnf
+2. sudo vim etm/my.cnf
+
+进入文件加入以下内容
+
+
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4
+
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+3. 重起mysql
+4. 导入sql 文件
