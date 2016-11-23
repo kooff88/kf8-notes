@@ -1,0 +1,14 @@
+node.js  输出var 
+
+
+var http = require('http');
+var timestam=Date.parse(new Date());
+http.createServer(function(request,response){
+	response.writeHead(200,{'Content-Type':'text/html;charser=utf-8'})
+	console.log('访问');
+	response.write('hello,world');
+	response.end('');
+}).listen(8000);
+console.log('Server  running at http://127.0.0.1:8000/');
+
+怎样输出timestam?
