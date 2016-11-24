@@ -1,0 +1,16 @@
+node.js 中一些问题
+
+req.param 获取pathinfo中参数 /api/users/{id}
+req.query 获取查询参数 /api/users?name=wwx
+req.body  获取form提交参数
+
+
+mysql 中 查询 
+a和 b 表
+SELECT COUNT(1) AS totals FROM  a s,b u where s.user_id=u.user_id  and s.statu in (0,1,2) and s.deleted=0
+
+数组 
+必须有数字下标 
+
+阮一峰
+ 
