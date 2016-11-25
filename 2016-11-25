@@ -1,0 +1,19 @@
+git  用法
+上传 并且加载最新项目
+git remote -v 
+
+git remote add upstream git@114.55.148.71:zhangpeng/TODO.git
+
+git remote -v
+
+git fetch upstream
+
+git checkout 
+
+git branch -av
+
+git checkout  dev
+不出错
+git checkout  dev
+git branch -av
+git merge upstream/dev （合并项目）
