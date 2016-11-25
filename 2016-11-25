@@ -2,7 +2,7 @@ git  用法
 上传 并且加载最新项目
 git remote -v 
 
-git remote add upstream git@114.55.148.71:zhangpeng/TODO.git
+git remote add upstream git@12...........git
 
 git remote -v
 
