@@ -1,0 +1,17 @@
+react 前台路由 导入模块
+const userIsInATeam = (nextState, replace, callback) => {
+  fetch(...)
+    .then(response = response.json())
+    .then(userTeams => {
+      if (userTeams.length === 0) {
+        replace(`/users/${nextState.params.userId}/teams/new`)
+      }
+      callback();
+    })
+    .catch(error => {
+      // do some error handling here
+      callback(error);
+    })
+}
+
+<Route path="/users/:userId/teams" onEnter={userIsInATeam} />
