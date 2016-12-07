@@ -1,0 +1,18 @@
+验证码图片点击更换
+。。。
+constructor(props) {
+    super(props);
+    this.state={
+      url:`/yan?${new Date().getTime()}`
+    }
+  }
+。。。
+onClickCaptcha(){
+    this.setState({
+      url:`/yan?${new Date().getTime()}`
+    })
+  }
+。。。
+<img src={this.state.url} onClick={this.onClickCaptcha.bind(this)}/>
+
+。。。
