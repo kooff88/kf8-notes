@@ -1,0 +1,19 @@
+设置密码不一致显示
+checkConfirm(rule, value, callback) {
+    if (value && value !== this.props.form.getFieldValue('newPassword')) {
+      callback('密码不一致');
+    } else {
+      callback();
+    }
+  }
+   
+  render(){
+    const {  getFieldProps, getFieldError, isFieldValidating } = this.props.form;
+    const confirmProps = getFieldProps('confirmPassword', {
+      rules: [
+        { required: true, whitespace: true, min: 6, max: 30,message: '密码长度6-30位'  },
+        {validator: this.checkConfirm.bind(this)}   //------------------>>>>bind(this) 是react新版本必须有的  老版本不要！！！！
+      ],
+    });
+ .....
+    
