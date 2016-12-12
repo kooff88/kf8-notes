@@ -1,5 +1,17 @@
 设置密码不一致显示
+A(e) {
+    const value = e.target.value;   // e.target.value获取的就是你选择接受事件的元素输入的或者选择的值。
+    this.setState({ passwordDirty: this.state.abc || !!value }); //你不需要用 setState，可以使用 this.props.form.setFieldsValue 来动态改变表单值
+  }
 checkConfirm(rule, value, callback) {
+    const form = this.props.form;
+    if (value && this.state.abc) {   
+      form.validateFields(['confirm'], { force: true });//validateFields:校验并获取一组输入域的值;;  force:true  获取焦点为真
+    }
+    callback();
+  }
+
+checkPassword(rule, value, callback) {
     if (value && value !== this.props.form.getFieldValue('newPassword')) {
       callback('密码不一致');
     } else {
