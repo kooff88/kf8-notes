@@ -1,0 +1,3 @@
+var query = 'id,pic_url,title,description,price,statu,update_at'
+    var where = `WHERE user_id=${uid+statu}`;
+    var sql = `select ${query},1 as type from meeting ${where} UNION select ${query},2 as type from station ${where} `;
