@@ -1,0 +1,26 @@
+ 
+ render(){
+      const {loading,selectedRowKeys} = this.state;
+      const rowSelection = {
+        selectedRowKeys,
+        onChange:this.onSelectChange.bind(this),
+      };
+      const hasSelected = selectedRowKeys.length > 0;    ---->hasSelected 不理解
+      return(
+        <div>
+          <ButtonGroup style={{marginBottom:"10px"}}>
+            <Button size="large" onClick={()=>this.modalShowAddAd(true)}>添加广告</Button>
+            <Button size="large" onClick={this.deleteAd.bind(this)} disabled={!hasSelected}>删除广告</Button>
+            <Button> </Button>
+          </ButtonGroup>
+        </div>
+      )
+    }
+    
+    
+     ...this.props   传出所有属性
+     
+      <a href="javascript:;"></a>    javascript: 是一个伪协议，其他的伪协议还有 mail:  tel:  file:  等等。
+       javascript:是表示在触发<a>默认动作时，执行一段JavaScript代码，而 javascript:; 表示什么都不执行，这样点击<a>时就没有任何反应。
+       
+       
