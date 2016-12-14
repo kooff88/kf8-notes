@@ -1,0 +1,8 @@
+function textCut(txt,num){
+  if(txt.length>num){
+    txt = txt.substr(0,num) + "...";
+  }
+  return txt;
+}
+
+textCut(text,5)
