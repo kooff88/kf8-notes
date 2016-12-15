@@ -20,3 +20,5 @@ git merge upstream/dev （合并项目）
 
 
 git pull upstream 拉回某分支
+
+git init   加载package.json 文件
