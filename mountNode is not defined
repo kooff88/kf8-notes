@@ -1,0 +1,2 @@
+ReactDOM.render(<App />,  document.getElementById('root')); 
+ReactDOM.render(<App />,  mountNode);  ----->>>>  mountNode是react将<App/>传送的目标 必须给除目标
