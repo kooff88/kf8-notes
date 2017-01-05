@@ -1,0 +1,11 @@
+
+1. 密钥生成
+   ssh-keygen -t rsa -C "zhangpeng101@163.com"
+   
+2.密钥添加 
+  subl /Users/mac/.ssh/id_rsa.pub（通过sublime打开显示公共密钥） 
+  复制》》粘贴到github/gitlab公钥添加处》》
+  
+3.设置远程仓库 即可
+   git remote -v
+   git remote add origin  git@140.206.185.170:666/wabg-server.git (这是github/gitlab中ssh地址，复制过来即可)
