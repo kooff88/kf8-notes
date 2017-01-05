@@ -9,3 +9,14 @@
 3.设置远程仓库 即可
    git remote -v
    git remote add origin  git@140.206.185.170:666/wabg-server.git (这是github/gitlab中ssh地址，复制过来即可)
+
+
+other:
+
+~   最外路径
+.ssh 进入密钥文件夹
+文件夹内包括config 配置文件   ；；各种密钥文件
+config      id_rsa      id_rsa.pub  id_rsa1     id_rsa1.pub known_hosts
+
+cat  id_rsa.pub (通过cat 命令打开密钥查看)
+
