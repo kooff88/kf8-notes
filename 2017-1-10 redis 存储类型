@@ -1,0 +1,23 @@
+ redis  类型存储
+ 
+    String
+
+    Hash
+
+    List
+
+    Set
+
+    Sorted set
+
+    pub/sub
+
+    Transactions
+
+
+ 
+ 注：
+            从数据库取出的数据类型为已设置为json类型,存入redis时转换为string类型
+            从redis中取出传回前端时 则转换为json类型  
+
+        总结：运用redis缓存技术存储数据  减少了对数据库的重复查询 ，节省电脑资源，加快查询速度，提高搜索性能！！！
