@@ -1,0 +1,4 @@
+var keyword = keyword.replace(/(^\s+)|(\s+$)/g,"")   //去除keyword两边的所有空格
+    if(keyword =="") return res.json({"code":10086, "message":"请输入要查询的内容"});
+    var reg = /%+/;     
+    var keyword=keyword.replace(reg,'/%');    //将keyword 中％转义
