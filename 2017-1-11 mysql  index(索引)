@@ -1,0 +1,34 @@
+建立索引的时机
+
+
+
+例如一两千条甚至只有几百条记录的表，没必要建索引，让查询做全表扫描就好了。
+至于多少条记录才算多，这个个人有个人的看法，我个人的经验是以2000作为分界线，记录数不超过 2000可以考虑不建索引，超过2000条可以酌情考虑索引。
+另一种不建议建索引的情况是索引的选择性较低。所谓索引的选择性（Selectivity），是指不重复的索引值（也叫基数，Cardinality）与表记录数（#T）的比值：
+
+Index Selectivity = Cardinality / #T
+显然选择性的取值范围为(0, 1]，选择性越高的索引价值越大，这是由B+Tree的性质决定的。
+例如，上文用到的employees.titles表，如果title字段经常被单独查询，是否需要建索引，我们看一下它的选择性：
+SELECT count(DISTINCT(title))/count(*) AS Selectivity FROM meeting;
+
+主键索引建立的规则是 int优于varchar,一般在建表的时候创建,最好是与表的其他字段不相关的列或者是业务不相关的列.
+一般会设为 int 而且是 AUTO_INCREMENT自增类型的
+
+在WHERE和JOIN中出现的列需要建立索引，但也不完全如此：
+MySQL只对<，<=，=，>，>=，BETWEEN，IN使用索引
+某些时候的LIKE也会使用索引。
+在LIKE以通配符%和_开头作查询时，MySQL不会使用索引。
+
+SELECT * FROM mytable WHERE username like'admin%'; -- 而下句就不会使用：
+SELECT * FROM mytable WHEREt Name like'%admin'; -- 因此，在使用LIKE时应注意以上的区别。
+
+索引的注意事项：
+  索引不会包含有NULL值的列
+  使用短索引
+  不要在列上进行运算 索引会失效
+  
+  
+  
+索引的本质：
+  MySQL官方对索引的定义为：索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。
+
