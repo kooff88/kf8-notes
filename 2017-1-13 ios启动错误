@@ -1,0 +1,36 @@
+	
+When I run react-native run-ios the build succeeds but I get the error below. I've checked all over the place but nothing seems to be working. Using sudo in front of the command does not help either. I am using Xcode 7.3, react-native-cli: 0.2.0, react-native: 0.24.1, node v5.11.0.
+
+=== BUILD TARGET mobileTests OF PROJECT mobile WITH CONFIGURATION Release ===
+
+Check dependencies
+
+** BUILD SUCCEEDED **
+
+Installing build/Build/Products/Debug-iphonesimulator/mobile.app
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=2):
+Failed to install the requested application
+An application bundle was not found at the provided path.
+Provide a valid path to the desired application bundle.
+Print: Entry, ":CFBundleIdentifier", Does Not Exist
+/Users/astiefel/workspace/bosspayments/mobile/node_modules/promise/lib/done.js:10
+      throw err;
+      ^
+
+Error: Command failed: /usr/libexec/PlistBuddy -c Print:CFBundleIdentifier build/Build/Products/Debug-iphonesimulator/mobile.app/Info.plist
+Print: Entry, ":CFBundleIdentifier", Does Not Exist
+
+
+
+
+solution:
+Have you checked that you declared a bundle identifier? 
+You can do this by Clicking on your project file in xcode and then selecting the general tab 
+and it is listed under the first text box under "Identity".
+Another way to check is to check in your info.plist file in the ios folder of your project.
+This is how it shows in my info.plist. My actual bundle identifier for my project is in xcode.
+
+此错误release启动出现
+将下面的代码放入 
+<key>CFBundleIdentifier</key>
+<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
