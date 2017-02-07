@@ -1,6 +1,0 @@
- <RangePicker
-      defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}－－－－》》默认值格式 数组
-      format={dateFormat}
- />
- 
- 看官方文档 
