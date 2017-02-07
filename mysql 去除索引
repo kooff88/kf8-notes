@@ -1,3 +1,0 @@
-需要查建表的时候 所建立的索引
-
-ALTER TABLE exhibition DROP INDEX  uk_exhibition_goods;
