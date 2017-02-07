@@ -1,9 +1,0 @@
-//取到上一页面传过来的参数
-var $ = $ || {}; 
-$.getParam = function( key, strURL ){
-strURL = strURL || window.location.search;
-return new RegExp( "(^|\\?|&)" + key + "=([^&]*)(\\s|&|$)", "i" ).test( strURL ) ?
-decodeURIComponent( RegExp.$2.replace( /\+/g, " " ) ) : "";
-};
-
-$.getParam（）；
