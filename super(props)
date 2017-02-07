@@ -1,9 +1,0 @@
-class Todo extends Component{
-    constructor(props){
-        super(props)
-    }
-}
-super(props)
-  解释一： extends 表示从父类继承，constructor 里的 super 表示父类的构造函数。
-  解释二： 在子类的构造函数中，只有调用super之后，才可以使用this关键字，否则会报错。
-          这是因为子类实例的构建，是基于对父类实例加工，只有super方法才能返回父类实例。
