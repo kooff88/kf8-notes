@@ -1,2 +1,0 @@
-this.props.A  调父及 属性
-this.refs.A  调子集属性
