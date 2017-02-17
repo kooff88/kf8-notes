@@ -4,7 +4,8 @@
 -[git第一次加载项目](#git第一次加载项目)
 -[git提交任务](#git提交任务)
 -[github与gitlab生成密钥](#github与gitlab生成密钥)
--[github与gitlab同一电脑同时应用](github与gitlab同一电脑同时应用)
+-[github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)
+-[github代码提交](#github代码提交)
 
 # git简单笔记
 
@@ -104,13 +105,20 @@
         在~/.ssh 下添加config 配置文件
     
     配置文件内容：
-        Host gitlab
+        Host gitlab.com
             HostName gitlab.com
+            user:59729233323@qq.com
             IdentityFile ~/.ssh/id_rsa
-        Host github
+        Host github.com
             HostName github.com
+            user:zhang101@qq.com
             IdentityFile ~/.ssh/id_rsa_work
 
     vim config (进行读写配置文件)
     wq 保存退出
 
+# github代码提交
+
+    git add.
+    git commit -m "aaa"
+    git push origin master
