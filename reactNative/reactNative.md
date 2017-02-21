@@ -1,40 +1,41 @@
 # 目录
 
-[组件](组件)
-[flex布局](flex布局)
-[方法](方法)
-
+[组件](#组件)
+[flex布局](#flex布局)
+[方法](#方法)
+[同时render多个TouchableOpacity](#同时render多个TouchableOpacity)
 
 react.native 
 # 组件：
  AsyncStorage（缓存仓库） ：已键值对 储存数据
-    ```
-    let UID123_object = {
-        name:'Chris',
-        age:30,
-        traits:{hair:'brown',eyes:'brown'},
-    };
-    // You only need to define what will be added or updated
-    let UID123_delta = {
-        age:31,
-        traits:{eyes:'blue',shoe_size:10}
-    };
-    AsyncStorage.setItem('UID123',JSON.stringify(UID123_object),()=>{
-        AsyncStorage.mergeItem('UID123',JSON.stringify(UID123_delta),()=>{
-            AsyncStorage.getItem('UID123',(err,result)=>{
-                console.log(result);
-            })
-        })
-    })
-    // result => {
-          'name':'Chris','age':31,'traits':{'shoe_size:10','hair':'brown','eye':'blue'}
-          }
+ 
+      ```
+      let UID123_object = {
+          name:'Chris',
+          age:30,
+          traits:{hair:'brown',eyes:'brown'},
+      };
+      // You only need to define what will be added or updated
+      let UID123_delta = {
+          age:31,
+          traits:{eyes:'blue',shoe_size:10}
+      };
+      AsyncStorage.setItem('UID123',JSON.stringify(UID123_object),()=>{
+          AsyncStorage.mergeItem('UID123',JSON.stringify(UID123_delta),()=>{
+              AsyncStorage.getItem('UID123',(err,result)=>{
+                  console.log(result);
+              })
+          })
+      })
+      // result => {
+            'name':'Chris','age':31,'traits':{'shoe_size:10','hair':'brown','eye':'blue'}
+            }
 
-    AsyncStorage.removeItem('UID123',(err)=>{
-        if(err){
-            alert('缓存清空失败');
-        }
-    })     
+      AsyncStorage.removeItem('UID123',(err)=>{
+          if(err){
+              alert('缓存清空失败');
+          }
+      })     
     ```
 
 
@@ -175,3 +176,22 @@ react.native
 
  componentWillMount()：用于 页面组建加载之前调用
                             
+# 多个TouchableOpacity同时应用
+
+  需要在最外层套一个<TouchableOpacity > 
+  ```
+  return (
+      <TouchableOpacity >
+        <TouchableOpacity  } >
+            <View >
+              <Text >预约</Text>
+            </View>
+        </TouchableOpacity>
+        <TouchableOpacity  >
+            <View >
+              <Text >预订</Text>
+            </View>
+        </TouchableOpacity>
+      </TouchableOpacity>  
+    )
+   ``` 
