@@ -1,8 +1,11 @@
 # 目录
 
 [组件](#组件)
+
 [flex布局](#flex布局)
+
 [方法](#方法)
+
 [同时render多个TouchableOpacity](#同时render多个TouchableOpacity)
 
 react.native 
