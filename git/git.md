@@ -35,6 +35,8 @@
     
     git fetch origin branchname:branchname    git拉取远程分支到本地分支或者创建本地新分支
     
+    git push --set-upstream origin dev     //初次提交 需指定默认分支
+    
 # git第一次加载项目
 
     git clone git@git.... 进行项目clone 
