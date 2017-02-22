@@ -8,6 +8,8 @@
 
 [同时render多个TouchableOpacity](#同时render多个TouchableOpacity)
 
+[web页面启用debugger进行开发](#web页面启用debugger进行开发)
+
 react.native 
 # 组件：
  AsyncStorage（缓存仓库） ：已键值对 储存数据
@@ -198,3 +200,21 @@ react.native
       </TouchableOpacity>  
     )
    ``` 
+   
+ #  web页面启用debugger进行开发
+ 
+    苹果mac 电脑  
+    command+d:显示
+    
+       Reload
+       Stop Remote JS Debugging
+       Enable Live Reload
+       Start Systrace
+       Disable Hot Reloading 
+       Show Inspector
+       Show Perf Monitor
+       
+       Cancel 
+    选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
+     
+     reload
