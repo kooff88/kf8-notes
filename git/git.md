@@ -1,10 +1,15 @@
 # 目录
 
 -[git加载项目](#git加载项目)
+
 -[git第一次加载项目](#git第一次加载项目)
+
 -[git提交任务](#git提交任务)
+
 -[github与gitlab生成密钥](#github与gitlab生成密钥)
+
 -[github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)
+
 -[github代码提交](#github代码提交)
 
 # git简单笔记
@@ -27,7 +32,9 @@
     git pull upstream 拉回上游分支
 
     git init   加载package.json 文件
-
+    
+    git fetch origin branchname:branchname    git拉取远程分支到本地分支或者创建本地新分支
+    
 # git第一次加载项目
 
     git clone git@git.... 进行项目clone 
