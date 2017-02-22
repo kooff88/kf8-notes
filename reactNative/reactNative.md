@@ -205,7 +205,7 @@ react.native
  
     苹果mac 电脑  
     command+d:显示
-    <br/>
+       <br/>
        Reload
        <br/>
        Stop Remote JS Debugging
@@ -220,9 +220,8 @@ react.native
        <br/>
        Show Perf Monitor
        <br/>
-       
        Cancel 
-       <br/>
-    选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
-     
-     reload
+       <br/> 
+       
+     选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
+  
