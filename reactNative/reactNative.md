@@ -10,6 +10,9 @@
 
 [web页面启用debugger进行开发](#web页面启用debugger进行开发)
 
+[组件Dimensions](#组件Dimensions)
+
+
 react.native 
 # 组件：
  AsyncStorage（缓存仓库） ：已键值对 储存数据
@@ -47,6 +50,8 @@ react.native
 
  navigator : 导航器 
     for example:
+    
+    
     ``` 
      export default class NavAllDay extends Component {
       render() {
@@ -225,3 +230,11 @@ react.native
        
      选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
   
+# 组件Dimensions
+      译注：本模块用于获取设备屏幕的宽高。
+      <br/>
+      
+      ```
+      例子：var {height, width} = Dimensions.get('window');
+      
+      ```
