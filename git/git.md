@@ -12,6 +12,8 @@
 
 -[github代码提交](#github代码提交)
 
+-[gitlog日志](#gitlog日志)
+
 # git简单笔记
 
     git  用法
@@ -131,3 +133,9 @@
     git add.
     git commit -m "aaa"
     git push origin master
+    
+    
+# gitlog日志  
+
+    git log   >>>>打印提交日志
+    git show a7d4c2055ee5cf2de35fa6733f43b71b7d0fb348    查看某条日志   (哈希值)
