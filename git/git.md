@@ -137,5 +137,7 @@
     
 # gitlog日志  
 
+    ```
     git log   >>>>打印提交日志
     git show a7d4c2055ee5cf2de35fa6733f43b71b7d0fb348    查看某条日志   (哈希值)
+    ```
