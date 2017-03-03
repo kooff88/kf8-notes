@@ -8,6 +8,8 @@
 - [配置文件改动](#配置文件改动)
 - [sql语句书写方式](#sql语句书写方式)
 - [UNSIGNED](#UNSIGNED)
+- [修改mysql密码](#修改mysql密码)
+- 
 # 索引
     - 建立索引的时机
 
@@ -132,6 +134,26 @@
     INT或INTEGER      4 字节    (-2 147 483 648，2 147 483 647)               (0，4 294 967 295) 大整数值
 
 
+#  修改mysql密码
+
+Mac OS X - 重置 MySQL Root 密码
+您是否忘记了Mac OS 的MySQL的root密码? 通过以下4步就可重新设置新密码：
+
+    ```
+    1.  停止 mysql server.  通常是在 '系统偏好设置' > MySQL > 'Stop MySQL Server'
+    2.  打开终端，输入：
+
+         sudo /usr/local/mysql/bin/mysqld_safe --skip-grant-tables
+
+    3.  打开另一个新终端，输入:
+         sudo /usr/local/mysql/bin/mysql -u root
+         UPDATE mysql.user SET authentication_string=PASSWORD('新密码') WHERE User='root';
+         FLUSH PRIVILEGES;
+         \q
+
+    4.  重启MySQL.
+    ```
+    
 
 
 
