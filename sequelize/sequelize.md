@@ -34,16 +34,15 @@
 
    **拉取列表**
 
-   var page = req.query.page
-   var perpage = 10
-   var pages = (page-1)*perpage;
-   Models.appointment.findAndCountAll({
+   perpage = parseInt(perpage);
+    page = parseInt(page);
+    
+    Models.exhibition.findAndCountAll({
       where :{
-        id: {
-           lte: pages+10,
-           gt: pages
-        },
-      }
+        deleted:0 
+      },
+      'offset': perpage * (page - 1), // 跳过多少条
+      'limit': perpage  
     }).then(function(results){
       if(!results) return res.json({ "code":1003,"message":"获取列表失败"})
       var page_count = Math.ceil(results.count/perpage);
