@@ -1,6 +1,8 @@
 # 目录
 
 [sequelize基本用法](#sequelize基本用法)
+[sequelize.and||sequelize.or](#sequelize.and||sequelize.or)
+[sequelize.query用法](#sequelize.query用法)
 
 # sequelize基本用法
 
@@ -140,3 +142,23 @@
   ```
 
 
+# sequelize.and||sequelize.or
+   
+  ```
+   where : Sequelize.and(
+     { deleted:0 },
+     Sequelize.or(
+     {title : { like: keyword + '%' } }
+  )
+
+  ```
+
+# sequelize.query用法
+
+  ```
+    Models.sequelize.query(sql,{type:Sequelize.QueryTypes.SELECT}).then(function(result){     
+
+    }).catch(...)
+
+  ```
+  上段代码中的 {type:Sequelize.QueryTypes.SELECT} 一定要加上 不让结果不准确
