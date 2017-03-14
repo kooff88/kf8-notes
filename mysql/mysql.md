@@ -152,6 +152,16 @@ Mac OS X - 重置 MySQL Root 密码
          \q
 
     4.  重启MySQL.
+    
+    5.加载 plist 配置的命令：
+
+        $ sudo launchctl load -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+        卸载 plist 配置的命令：
+
+        $ sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+        所以折腾了那么久，其实就只是因为 OS X 特殊的启动管理机制造成的 mysqld 自动启动并占用进程，造成我们期望的 MySQL 启动方式没有正常运行。
+
+        卸载掉 plsit 配置并重启系统就好了！
     ```
     
 
