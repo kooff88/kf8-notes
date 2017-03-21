@@ -7,6 +7,7 @@
 [web页面启用debugger进行开发](#web页面启用debugger进行开发)
 [组件Dimensions](#组件Dimensions)
 [组件Animated.View](#组件Animated.View)
+[软键盘事件监听及销毁](#软键盘事件监听及销毁)
 
 react.native 
 # 组件：
@@ -260,4 +261,27 @@ react.native
     )
   }
   
+  ```
+
+## 软键盘事件监听及销毁
+
+  ```
+  componentWillMount(){
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow',this._keyboardDidShow.bind(this));
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide',this._keyboardDidHide.bind(this));
+  }
+
+  componentWillUnmount(){
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow(e){
+    console.log('aaa')
+  }
+
+  _keyboardDidHide(e){
+    console.log('bbb')
+  }
+
   ```
