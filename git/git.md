@@ -21,7 +21,8 @@
     上传 并且加载最新项目：
 
     git remote -v 查看远程仓库
-    git remote add upstream git@12...........git
+    git remote add upstream git@12...........git  # 添加远程路径
+    git remote remove origin    # 删除远程路径
     git remote -v
     git fetch upstream
 

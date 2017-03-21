@@ -69,3 +69,8 @@
   cd AwesomeProject
   react-native run-ios
   ```
+
+
+xcode 8.3bate 错误
+
+https://github.com/ruslanskorb/RSKImageCropper/pull/139

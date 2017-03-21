@@ -3,6 +3,7 @@
 [sequelize基本用法](#sequelize基本用法)
 [sequelize.and||sequelize.or](#sequelize.and||sequelize.or)
 [sequelize.query用法](#sequelize.query用法)
+[sequelize.findOrCreate](#sequelize.findOrCreate)
 
 # sequelize基本用法
 
@@ -162,3 +163,6 @@
 
   ```
   上段代码中的 {type:Sequelize.QueryTypes.SELECT} 一定要加上 不让结果不准确
+
+
+# sequelize.findOrCreate
