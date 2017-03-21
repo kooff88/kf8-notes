@@ -1,17 +1,12 @@
 # 目录
 
 [组件](#组件)
-
 [flex布局](#flex布局)
-
 [方法](#方法)
-
 [同时render多个TouchableOpacity](#同时render多个TouchableOpacity)
-
 [web页面启用debugger进行开发](#web页面启用debugger进行开发)
-
 [组件Dimensions](#组件Dimensions)
-
+[组件Animated.View](#组件Animated.View)
 
 react.native 
 # 组件：
@@ -228,13 +223,41 @@ react.native
        Cancel 
        <br/> 
        
-     选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
+       选择  Stop Remote JS Debugging  模式 ＝＝》热加载 并且可以在 web 页面进行console.log,开发
+        ```
+
+## 组件Dimensions
+
+-  译注：本模块用于获取设备屏幕的宽高。
+- 例子：var {height, width} = Dimensions.get('window');
+
+
+
+## 组件Animated.View    
+-  举个栗子：
+  ```
+  constructor(props) {
+    super(props);
+    this.state={
+      viewMarginTop: new Animated.Value(0),
+    }
+  }
+
+  scrollViewToBottom(){
+    Animated.timing(
+      this.state.viewMarginTop,
+      {
+        toValue:this.state.keyboardHeight,
+        duration:0,
+      }
+    ).start();
+  }
+  render{
+    return(
+      <Animated.View style={{height:50,width:50,backgroundColor:"red",marginBottom:this.state.viewMarginTop}}> 
+        <Button onPress={this.scrollViewToBottom.bind(this)}></Button>   
+      </Animated.View>
+    )
+  }
   
-# 组件Dimensions
-      译注：本模块用于获取设备屏幕的宽高。
-      <br/>
-      
-      ```
-      例子：var {height, width} = Dimensions.get('window');
-      
-      ```
+  ```
