@@ -4,7 +4,9 @@
 [sequelize.and||sequelize.or](#sequelize.and||sequelize.or)
 [sequelize.query用法](#sequelize.query用法)
 [sequelize.findOrCreate](#sequelize.findOrCreate)
-
+[logging 使用](#logging 使用)
+[sequelize.bulkCreate](#sequelize.bulkCreate)
+bulkCreate
 # sequelize基本用法
 
 1.加载:
@@ -166,3 +168,58 @@
 
 
 # sequelize.findOrCreate
+
+## logging 使用
+-  官方文档：
+
+  [options.logging = console.log]   Boolean|function 
+
+  A function that logs sql queries,or false for no logging
+
+  
+  ```
+  for example:
+
+  [function]
+  var self = this
+  , type = dialect === 'mysql' ? 'signed' : 'integer'
+  , match = false;
+  return this.User.create({
+    intVal: this.sequelize.cast('1', type)
+  }, {
+    logging: function(sql) {
+      expect(sql).to.match(new RegExp("CAST\\(N?'1' AS " + type.toUpperCase() + '\\)'));
+      match = true;
+    }
+  }).then(function(user) {
+    
+    ...
+
+    });
+  });
+
+  [Boolean]
+
+  // 初始化省市区数据
+    Models.a.findOne({where:{id:1},logging:false}).then(function(area){
+      if(area) return console.log("> ....exists!")
+    })
+
+   ```
+
+
+## sequelize.bulkCreate   
+
+- bulkCreate 创建 并且插入数据  
+- aaa 是对象数组  
+  ```
+  var  aaa = [
+    {'id':1,'title':'一个例子','content':'栗子内容'}
+  ]
+  Models.provinces.bulkCreate(aaa,{logging:false}).then(function (result) {
+    console.log(">  OK!")
+  }).catch(function (err) {
+    console.log("> ..-> error :",err)
+  });
+  ```    
+ 
