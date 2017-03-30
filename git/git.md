@@ -141,4 +141,6 @@
     git log   >>>>打印提交日志
     git show a7d4c2055ee5cf2de35fa6733f43b71b7d0fb348    查看某条日志   (哈希值)
   
+    git reset --hard commit_id  >>>>彻底回退到某个版本，本地的源码也会变成上一个版本内容
   
+    git reset --soft 回退到某个版本，只回退了commit的信息，不会恢复到index file 一级，如果还要提交，直接commit即可.
