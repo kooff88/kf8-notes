@@ -2,6 +2,7 @@
 
 -[存储类型](#存储类型)
 -[redis应用](#redis应用)
+-[redis开启监听所有事件](#redis开启监听所有事件)
 
 # 存储类型
 
@@ -52,5 +53,11 @@
             return res.json({"code":0, "message":"删除成功！"});
         }
     })
-    ```  
-    
+    ```
+
+## redis开启监听所有事件      
+  
+    开启命令: redis-cli -p 6380 config set notify-keyspace-events KEA
+    redis-cli --csv psubscript '__key*__:*'  
+    需要设置redis开启事件监听，默认未开启
+    https://cnodejs.org/topic/5577b493c4e7fbea6e9a33c9  

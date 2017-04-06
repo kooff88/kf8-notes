@@ -6,7 +6,8 @@
 [sequelize.findOrCreate](#sequelize.findOrCreate)
 [logging 使用](#logging 使用)
 [sequelize.bulkCreate](#sequelize.bulkCreate)
-bulkCreate
+[sequelize建表](#sequelize建表)
+
 # sequelize基本用法
 
 1.加载:
@@ -221,5 +222,24 @@ bulkCreate
   }).catch(function (err) {
     console.log("> ..-> error :",err)
   });
-  ```    
+  ```
+
+## sequelize建表
+
+ ```
+ var sequelize = require('db/json') //连数据库
+ var Sequelize = require('sequelize');
+ var User = sequelize.define('User',{
+    user_id:{ type:Sequelize.STRING,primaryKey:true },
+    name: Sequelize.STRING,    
+    phone: Sequelize.STRING,    
+    create_date: Sequelize.DATE,    
+    update_date: Sequelize.DATE   
+ },{
+    freezeTableName:true,  //默认false修改表名为复数，true不修改表名,与数据库表名同步
+    tableName:'user',
+    timestamps:false
+ })
+ ```
+
  
