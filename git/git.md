@@ -39,6 +39,8 @@
     git fetch origin branchname:branchname    git拉取远程分支到本地分支或者创建本地新分支
     
     git push --set-upstream origin dev     //初次提交 需指定默认分支
+
+    git pull origin dev --allow-unrelated-histories  (fatal: refusing to merge unrelated histories)
     
 # git第一次加载项目
 
