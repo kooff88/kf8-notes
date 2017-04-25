@@ -290,6 +290,10 @@ react.native
 ## 打开外部链接
 
 ```
+  要启动一个链接相对应的应用(打开浏览器，邮件或者其他应用)
+  Linking.openURL(url).catch(err =>console.error('An error occurred',err))
+
+  如果想在打开链接前先检查是否安装了对应的应用，则调用以下方法
   Linking.canOpenURL(url).then(supported =>{
     if(!supported){
       console.log('Can\'t handle url' + url);
