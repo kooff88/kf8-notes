@@ -7,6 +7,7 @@
 [logging 使用](#logging 使用)
 [sequelize.bulkCreate](#sequelize.bulkCreate)
 [sequelize建表](#sequelize建表)
+[setDataValue,getDataValue](#setDataValue,getDataValue)
 
 # sequelize基本用法
 
@@ -243,5 +244,16 @@
  ```
 
  
- 两张表  事物
- 的redis list 
+
+## setDataValue,getDataValue
+
+```
+var name = '张三'
+sequelize.aa.findOne({
+  where:{...}
+}).then(function(result){
+  var a = result.getDataValue('name')
+  var b = ressult.setDataValue('name':name)
+})
+
+```
