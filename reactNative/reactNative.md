@@ -8,6 +8,7 @@
 [组件Dimensions](#组件Dimensions)
 [组件Animated.View](#组件Animated.View)
 [软键盘事件监听及销毁](#软键盘事件监听及销毁)
+[打开外部链接](#打开外部链接)
 
 react.native 
 # 组件：
@@ -285,3 +286,15 @@ react.native
   }
 
   ```
+
+## 打开外部链接
+
+```
+  Linking.canOpenURL(url).then(supported =>{
+    if(!supported){
+      console.log('Can\'t handle url' + url);
+    }else{
+      return Linking openURL(url);
+    }
+  }).catch(err => console.error('An error occurred',err))
+```
