@@ -152,6 +152,8 @@ Mac OS X - 重置 MySQL Root 密码
          或者(1)(2) 可选择
          (2)ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
          
+         (3) SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');   
+
          FLUSH PRIVILEGES;
          \q
 
