@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-Type" content="text/html;charset=utf-8"/> 
+  <title>test</title>
+</head>
+<body>
+  <div>
+    士兵
+  </div>
+</body>
+<script>
+  function soldier(id){
+    var tempObject={};
+    tempObject.__proto__ = soldier.prototype ;
+    tempObject.id = id;
+    tempObject.blood = 42;
+    return tempObject ;
+  }
+  soldier.prototype ={
+    types:"美国大兵",
+    aggressivity:"5",
+    walk:function(){
+      return 'SB'
+    }
+  }
+
+  var soldiers = [];
+  for(var i=0;i<10;i++){
+    soldiers.push(soldier(i))
+  }
+  console.log(soldiers)
+
+</script>
+</html>
