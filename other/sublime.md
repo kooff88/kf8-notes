@@ -15,7 +15,7 @@
 
 - 修改配置文件  永久使用subl ./
   ```
-  1.vim ~/.bash-profile
+  1.vim ~/.bash-profile    /   vim ~/.zshrc
   
   在文件.bash-profile中添加软链接
   alias subl=\''/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'\' ;
