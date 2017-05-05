@@ -2,6 +2,7 @@
 
 - [javascript合并两个json对象](#javascript合并两个json对象)
 - [Promise(es6)](#Promise(es6))
+- [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
 
 ## javascript合并两个json对象
 
@@ -44,7 +45,17 @@
       }
     })
 
-   ```
-   Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是  resolve,reject
+    Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是  resolve,reject
    异步操作成功  Pending->Resolved    
    异步操作失败  Pending->Rejec
+
+   ```
+   
+
+## js 小写字符串转换为大写字母
+  ```
+   'Null'.toUpperCase()
+
+   result: NULL
+
+  ```
