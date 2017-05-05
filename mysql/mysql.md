@@ -9,7 +9,9 @@
 - [sql语句书写方式](#sql语句书写方式)
 - [UNSIGNED](#UNSIGNED)
 - [修改mysql密码](#修改mysql密码)
-- 
+- [查询建立锁机制(mysql,redis) ](#查询建立锁机制(mysql,redis))
+
+
 # 索引
     - 建立索引的时机
 
@@ -123,7 +125,7 @@
 
 
 # UNSIGNED
-
+    ```
     UNSIGNED属性就是将数字类型无符号化，与C、C++这些程序语言中的unsigned含义相同。例如，INT的类型范围是-2 147 483 648 ～ 2 147 483 647， INT UNSIGNED的范围类型就是0 ～ 4 294 967 295
     在MYSQL中整型范围：
 
@@ -132,44 +134,79 @@
     SMALLINT          2 字节    (-32 768，32 767)                              (0，65 535) 大整数值
     MEDIUMINT         3 字节    (-8 388 608，8 388 607)                        (0，16 777 215) 大整数值
     INT或INTEGER      4 字节    (-2 147 483 648，2 147 483 647)               (0，4 294 967 295) 大整数值
+    ```
+
 
 
 #  修改mysql密码
 
 Mac OS X - 重置 MySQL Root 密码
 您是否忘记了Mac OS 的MySQL的root密码? 通过以下4步就可重新设置新密码：
-
-    ```
+```
     1.  停止 mysql server.  通常是在 '系统偏好设置' > MySQL > 'Stop MySQL Server'
     2.  打开终端，输入：
-
          sudo /usr/local/mysql/bin/mysqld_safe --skip-grant-tables
-
     3.  打开另一个新终端，输入:
          sudo /usr/local/mysql/bin/mysql -u root
-         
          (1)UPDATE mysql.user SET authentication_string=PASSWORD('新密码') WHERE User='root';
          或者(1)(2) 可选择
          (2)ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
-         
          (3) SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');   
-
          FLUSH PRIVILEGES;
          \q
-
     4.  重启MySQL.
-    
-    5.加载 plist 配置的命令：
-
+    5.  加载 plist 配置的命令：
         $ sudo launchctl load -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
         卸载 plist 配置的命令：
-
         $ sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
         所以折腾了那么久，其实就只是因为 OS X 特殊的启动管理机制造成的 mysqld 自动启动并占用进程，造成我们期望的 MySQL 启动方式没有正常运行。
-
         卸载掉 plsit 配置并重启系统就好了！
-    ```
+```
+
+
+
     
 
+## 查询建立锁机制(mysql,redis)
 
+ ```
+    查询优惠券实例
+    //如果优惠券泪飙缓存存在，从缓存中查询
+    if(redisClient.isExist("优惠券列表key")){
+        return redisClient.lrange("优惠券列表key",0,-1);
+    }
+
+    // 缓存不存在，从db查询优惠券列表
+    List couponList = getListFormDb();
+
+    //争夺分布式锁,过期时间1秒
+    if(redisClient.set("分布式锁key","OK",1,NX) != null){
+        try{
+            //获取分布式锁，再次判断优惠券缓存的存在
+            if(redisClient.isExist("优惠券列表key")){
+                return couponList;
+            }
+
+            //把db的查询结果循环插入到缓存中
+            for(Coupon coupon : couponList){
+                redisClient.rpush("优惠券列表key",coupon);
+            }
+        }
+        finally{
+            //释放分布式锁
+            redisClient.del("分布式锁key")
+        }
+    }
+
+    return couponList;
+
+总结 ：
+   1.查询缓存，如果缓存存在，返回结果
+   2.缓存不存在，查询数据库
+   3.争夺分布式锁
+   4.成功获得锁，再次判断缓存的存在
+   5.如果缓存仍旧不存在，把查询数据库的结果循环放入缓存
+   6.释放分布式锁
+
+ ```
 
