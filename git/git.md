@@ -14,6 +14,8 @@
 
 -[gitlog日志](#gitlog日志)
 
+-[submodule](#submodule)
+
 # git简单笔记
 
     git  用法
@@ -146,3 +148,27 @@
     git reset --hard commit_id  >>>>彻底回退到某个版本，本地的源码也会变成上一个版本内容
   
     git reset --soft 回退到某个版本，只回退了commit的信息，不会恢复到index file 一级，如果还要提交，直接commit即可.
+
+
+## submodule
+
+```
+    git submodule add --force '仓库地址' '路径'
+    # 其中，仓库地址是指模块仓库地址,路径指将子模块放置在当前工程下的路径.
+    # 注意:路径不能以 / 结尾 (会造成修改不生效) , 不能是现有工程已有的目录(不能顺利clone)
+    git submodule init #初始化 submodule
+    git submodule update # 更新submodule(必须在跟目录执行命令)
+```
+
+- 当使用git clone 下来的工程中带有submodule时，初始的时候，submodule的内容并不会自动下载下来的,此时需要执行命令:
+
+```
+ git submodule update --init --recursive # 下载的工程带有submodule
+ git submodule foreach git pull # submodule 里有其他的 submodule 一次更新
+ git submodule foreach git pull origin master # submodule 更新
+
+
+ git submodule foreach --recursive git submodule init 
+ git submodule foreach --recursive git submodule update
+```
+
