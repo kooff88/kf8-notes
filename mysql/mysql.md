@@ -9,7 +9,8 @@
 - [sql语句书写方式](#sql语句书写方式)
 - [UNSIGNED](#UNSIGNED)
 - [修改mysql密码](#修改mysql密码)
-- [查询建立锁机制(mysql,redis) ](#查询建立锁机制(mysql,redis))
+- [查询建立锁机制(mysql,redis) ](#查询建立锁机制(mysql,redis)
+- [更新](#更新)
 
 
 # 索引
@@ -209,4 +210,12 @@ Mac OS X - 重置 MySQL Root 密码
    6.释放分布式锁
 
  ```
+
+## 更新 
+
+- 已存在就更新，否则创建
+- 
+```
+INSERT INTO `charger` (`id`,`type`,`create_at`,`update_at`) VALUES (3,2,'2017-05-18 11:06:17','2017-05-18 11:06:17') ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `type`=VALUES(`type`), `update_at`=VALUES(`update_at`);
+```
 
