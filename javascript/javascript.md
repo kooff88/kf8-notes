@@ -2,6 +2,7 @@
 
 - [javascript合并两个json对象](#javascript合并两个json对象)
 - [Promise(es6)](#Promise(es6))
+- [Promise.all](#Promise.all)
 - [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
 
 ## javascript合并两个json对象
@@ -59,3 +60,38 @@
    result: NULL
 
   ```
+
+
+## Promise.all
+-  Promise.all 是在所有的Promise对象都执行完成之后resolve.参数是一个数组  
+  ，数组的每一项都是一个Promise对象就可以  
+
+```
+Promise.all([
+  promise1,
+  promise2
+]).then(function(){
+  //do something
+});
+
+Promise.all([Promise.resolve(),Promise.resolve()]).then(function(){
+  //do something
+})
+
+比如你有两个异步的执行:
+
+Promise.all([
+  new Promise(function(resolve){
+    setTimeout(function(){
+      resolve();
+    },2000)
+  }),
+  new Promise(function(resolve){
+    setTimeout(function(){
+      resolve();
+    },1000)
+  })
+])
+
+```
+
