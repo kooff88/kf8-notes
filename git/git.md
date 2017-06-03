@@ -1,20 +1,20 @@
 # 目录
 
--[git加载项目](#git加载项目)
+- [git加载项目](#git加载项目)
 
--[git第一次加载项目](#git第一次加载项目)
+- [git第一次加载项目](#git第一次加载项目)
 
--[git提交任务](#git提交任务)
+- [git提交任务](#git提交任务)
 
--[github与gitlab生成密钥](#github与gitlab生成密钥)
+- [github与gitlab生成密钥](#github与gitlab生成密钥)
 
--[github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)
+- [github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)
 
--[github代码提交](#github代码提交)
+- [github代码提交](#github代码提交)
 
--[gitlog日志](#gitlog日志)
+- [gitlog日志](#gitlog日志)
 
--[submodule](#submodule)
+- [submodule](#submodule)
 
 # git简单笔记
 
