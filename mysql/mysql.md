@@ -11,6 +11,7 @@
 - [修改mysql密码](#修改mysql密码)
 - [查询建立锁机制(mysql,redis) ](#查询建立锁机制(mysql,redis)
 - [更新](#更新)
+- [upsert](#upsert)
 
 
 # 索引
@@ -219,3 +220,17 @@ Mac OS X - 重置 MySQL Root 密码
 INSERT INTO `charger` (`id`,`type`,`create_at`,`update_at`) VALUES (3,2,'2017-05-18 11:06:17','2017-05-18 11:06:17') ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `type`=VALUES(`type`), `update_at`=VALUES(`update_at`);
 ```
 
+## upsert
+- 如果存在则更新 否则创建
+```
+var data = [1,2,3,4];
+var arr = [];
+Models.sequelize.transaction(function(t){
+    data.forEach(function(item){
+        arr.push(Models.test.upsert(item,{ transaction:t })); 
+    })
+    return Models.sequelize.Promise.all(arr).then(function(success){
+        res.json({code:0},message:'更新成功')
+    })
+})
+```
