@@ -1,8 +1,9 @@
 # 目录
 
-- [遍历](#遍历)
+- [for-of遍历](#for-of遍历)
+- [各种遍历](#各种遍历)
 
-# 遍历
+# for-of遍历
 
 - for-of循环
 
@@ -51,5 +52,47 @@
   }
 ```
 
+## 各种遍历
+
+1. forEach
+   forEach 是Array新方法中最基本的一个，就是遍历，循环。
+   ```
+   [1,2,3,4].forEach(alert);
+   等同于：
+   var array = [1,2,3,4];
+   for (var k = 0, length = array.length; k < length; k++) {
+      alert(array[k]);
+   }
+
+   Array在ES5新增的方法中，参数都是function类型，默认有传参，这些参数分别是:
+   [1,2,3,4].forEach(console.log);
+
+    // 结果：
+
+    // 1, 0, [1, 2, 3, 4]
+    // 2, 1, [1, 2, 3, 4]
+    // 3, 2, [1, 2, 3, 4]
+    // 4, 3, [1, 2, 3, 4]
+
+    三个参数 : 
+    [].forEach(function(value, index, array) {
+      // ...
+    });
+
+    举例：
+    var database = {
+      users:["张含韵","江一燕","李小璐"],
+      sendEmail:function(user){
+        if(this.isValidUser(user)){
+          console.log("你好,"+user);
+        }else{
+          cosnole.log("抱歉,"+user+",你不是本家人");
+        }
+      },
+      isValidUser:function(user){
+        return /^张/.test(user);
+      }
+    }
+   ```
 
 
