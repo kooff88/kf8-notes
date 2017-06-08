@@ -93,6 +93,90 @@
         return /^张/.test(user);
       }
     }
+
+
+    //给每个人发邮件
+
+    database.users.forEach(  //database.users中人遍历
+      database.sendEmail,    //发送邮件
+      database               //使用database代替上面标红的this
+    );
+
+
+    //结果：
+    // 你好，张含韵
+    // 抱歉，江一燕，你不是本家人
+    // 抱歉，李小璐，你不是本家
+
+    如果这第2个可选参数不指定，则使用全局对象代替(在浏览器是window),严格模式下甚至是undefined
+    另外，forEach不会遍历纯粹"占着官位吃空饷"的元素，例如下面的例子：
+
+    var array = [1,2,3];
+
+    delete array [1];
+    alert(array) // "1,,3"
+
+    alert(array.length)
+
+    alert(array.length); // but the length is still 3
+
+    array.forEach(alert); // 弹出的仅仅是1和3
    ```
 
+2. map  
+   指"映射". [].map;基本用法跟forEach类似:  
+
+   ```
+   array.map(callback,[thisObject]);
+
+   callback的参数也类似:
+
+   [].map(function(){
+      // ...
+   })
+
+   "映射",就是原数组被“映射”成对应新数组。下面这个例子是数值项求平方：
+
+   var data = [1,2,3,4];
+
+   var arrayOfSquares = data.map(function(item){
+      return item * item;
+   });
+
+   console.log(arrayOfSquares); // 1,4,9,16
+
+   var data = [1, 2, 3, 4];
+   var arrayOfSquares = data.map(function() {});
+
+   arrayOfSquares.forEach(console.log);
+   结果如下图，可以看到，数组所有项都被映射成了undefined：
+
+
+  var users = [
+    {name : "张含韵","email":"zhang@email.com"},
+    {name : "张一燕","eamil":"jiang@email.com"},
+    {name : "李小璐","email":"li@email.com"}
+  ];
+
+  var emails = users.map(function(user){ return user.email });
+
+  console.log(emails.join(",")); //zhang@email.com, jiang@email.com, li@email.com
+
+
+   ```
+
+3. filter 
+  filter为"过滤"，“筛选”之意。指数组filter后，返回过滤后的新数组。用法跟map极为相似:
+
+  array.filter(callback,[thisObject]);
+
+  filter的callback函数需要返回布尔值true或false,如果为true组表示通过!false ,抛弃
+
+  ```
+  var data = [0, 1, 2, 3];
+  var arrayFilter = data.filter(function(item) {
+      return item;
+  });
+  console.log(arrayFilter); // [1, 2, 3]
+  ```
 
