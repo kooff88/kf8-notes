@@ -2,6 +2,7 @@
 
 - [for-of遍历](#for-of遍历)
 - [各种遍历](#各种遍历)
+- [map](#map)
 
 # for-of遍历
 
@@ -179,4 +180,170 @@
   });
   console.log(arrayFilter); // [1, 2, 3]
   ```
+
+## Map 
+
+- 用法
+
+```
+  var map = new Map();
+  map.set('name','zxguan');
+  map.set('age',27);
+  map.get('name');
+  map.get('age');
+
+```
+
+- 通过 console.log(map);打印出的结果:Map {'name' => 'zxguan','age' => 27}   
+
+- 数组作为构造参数
+
+- Map接收一个数组作为构造函数的参数。该数组的成员是一个个表示键值对的数组.  
+
+```
+  var map = new Map([['name','zxguan'],['age','27']]);
+  console.log(map);
+```
+
+- 结果一样也是 Map {'name' =>'zxguan','age' => 27}
+
+- 以上的代码实际上等同与:
+
+```
+  var map = new Map();
+  [['name','zxguan'],['age','age']].forEach(([key,value]) => map.set(key,value));
+
+```
+
+- 迭代
+- 有以下方法来遍历一个Map:
+
+- keys()返回所有的键名  
+- values()返回所有的值  
+- entries()返回所有的成员实体  
+- forEach()遍历Map所有的成员  
+
+```
+  var map = new Map([['name','zxguan'],['age','27']]);
+
+  var keys = map.keys();  //遍历key
+  for(let key of keys){
+    console.log(key);
+  }
+
+  var values = map.values();  //遍历Value
+  for(let value of values){
+     console.log(value);
+  }
+
+  var entries = map.entries();//遍历实体
+  for(let [key,value] of entries){
+    console.log(key,value);
+  }
+
+  map.forEach((value,index) => {
+    console.log("key:"+index + "value:"+value);
+  })
+
+  var reporter = {
+    report:function(key,value){
+      console.log("Key: %s, Value: %s",key,value)
+    }
+  }
+
+  map.forEach(function(value,key,mao){ //forEach的第二个方法用来绑定this
+    this.report(key,value);
+
+  },reporter);
+```
+
+- 常用的方法
+
+- map.clear(): clear方法清除所有成员，没有返回值
+- map.delete(key): 删除键为key的成员。删除成功，返回true;删除失败，返回false.
+- map.entries();返回所有的成员实体
+- forEach(calllback); 遍历map所有的成员
+- get(key):读取key对应的键值，如果找不到key,返回undefined
+- has(key):返回一个布尔值，表示某个键是否在map数据结构中
+- keys():返回所有的键名
+- set(key,value):设置key所对应的键值，然后返回整个map结构.如果key已经有值，则键值会被更新，否则就新建一个成员
+- size属性：属性返回map结构的成员总数.
+- values():返回所有的值
+
+- 值得注意的是,只有对同一个对象的引用，map才会视为同一个key.如：
+
+```
+var map = new Map();
+map.set(['KEY'],5);
+var value = map.get(['KEY']);
+console.log(value); //undefined
+
+var key1 = ['KEY'];
+var key2 = ['KEY'];
+var map = new Map();
+map.set(key1,'AAA');
+map.set(key2,'BBB');
+console.log(map.get(key1)); //AAA
+console.log(map.get(key2)); //BBB
+
+```
+
+- 如果要将Map转换为数组，可以使用扩展运算符 (...)
+
+```
+  var  myMap = new Map().set(true,7).set({foo:3},['abc']);
+  console.log([...myMap]);
+```
+
+- 以下是一些常用的转换工具方法:
+
+```
+//Map 转Object对象
+function map2Obj(map){
+  let obj = {};
+  for (let [key,value] of map){
+    obj[key] = value;
+  }
+  return obj;
+}
+
+// Object对象转Map
+function obj2Map(obj){
+  let map = new Map();
+  for (let key of Object.keys(obj)){
+    map.set(key,obj[key]);
+  }
+  return map
+}
+
+// Map转为Json
+function map2Json(map){
+ let keys = map.keys();
+ let isAllKeyStr = true; //是否key全部为字符串
+ for(let key of keys){
+  if (!((typeof key == 'string')&& (key.constructor == String))){
+    isAllKeyStr == false;
+    break;
+  }
+ }
+ if(isAllKeyStr){
+  return JSON.stringify(map2Obj(map));
+ }else{
+  reutrn JSON.stringify([...map]);
+ }
+}
+
+JSON转为Map
+function json2Map(json){
+  let _json = JSON.parse(json);
+  if(Array.isArray(_json)){
+    return new Map(JSON.parse(json));    
+  }else{
+    return obj2Map(JSON.parse(json));
+  }
+}
+```
+
+
+
 
