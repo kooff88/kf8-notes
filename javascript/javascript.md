@@ -4,6 +4,7 @@
 - [Promise(es6)](#Promise(es6))
 - [Promise.all](#Promise.all)
 - [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
+- [获取网址中数字](#获取网址中数字)
 
 ## javascript合并两个json对象
 
@@ -95,3 +96,15 @@ Promise.all([
 
 ```
 
+## 获取网址中数字
+
+```
+  var str=location.pathname;
+  var  m=str.match(/\/aaa\/([0-9]+)/);
+```
+
+```
+  react : (在框架配置好)
+  this.props.match.params.id,
+  
+```
