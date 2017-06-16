@@ -5,6 +5,7 @@
 - [Promise.all](#Promise.all)
 - [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
 - [获取网址中数字](#获取网址中数字)
+- [函数优化](#函数优化)
 
 ## javascript合并两个json对象
 
@@ -107,4 +108,34 @@ Promise.all([
   react : (在框架配置好)
   this.props.match.params.id,
   
+```
+
+## 函数优化
+
+```
+  未优化
+  function trim(string){
+    function trimStart(string){
+      return string.replace(/^s+/g,"")
+    }
+    function trimEnd(string){
+      return string.replace(/s+$/g,"")
+    }
+
+    return trimEnd(trimStart(string))
+  }
+
+  优化
+  function trimStart(string){
+    return string.replace(/^s+/g,"")
+  }
+
+  function trimStart(string){
+    return string.replace(/^s+/g,"")
+  }
+
+  function trim(string){
+    return trimEnd(trimStart(string))
+  }
+
 ```
