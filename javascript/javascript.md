@@ -6,6 +6,7 @@
 - [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
 - [获取网址中数字](#获取网址中数字)
 - [函数优化](#函数优化)
+- [水平滚动条](#水平滚动条)
 
 ## javascript合并两个json对象
 
@@ -138,4 +139,13 @@ Promise.all([
     return trimEnd(trimStart(string))
   }
 
+```
+
+# 水平滚动条
+
+```
+ css: 
+    overflow-x:scroll
+    overflow-x: auto
+    overflow-y:hidden
 ```
