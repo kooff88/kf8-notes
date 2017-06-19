@@ -3,6 +3,7 @@
 - [for-of遍历](#for-of遍历)
 - [各种遍历](#各种遍历)
 - [map](#map)
+- [es6扩展运算符](#es6扩展运算符)
 
 # for-of遍历
 
@@ -343,6 +344,150 @@ function json2Map(json){
   }
 }
 ```
+
+
+## es6扩展运算符
+
+- 语法  
+
+```
+  用于函数调用
+  myFunction(...iterableObj);
+
+  用于数组字面量
+  [...iterableObj,4,5,6]
+```
+
+- 函数传参  
+- 目前为止，我们都是使用Function.prototype.apply方法来将一个数组展开成多个参数:  
+
+```
+  function myFunction(x,y,z) {}
+  var args = [0,1,2];
+  myFunction.apply(null,args);
+```
+
+- 使用es6的扩展运算符可以这么写:  
+
+```
+  function myFunction(x,y,z){}
+  var args = [0,1,2];
+  myFunction(...args);
+```
+
+- 选择性传参  
+
+```
+  function filter(type,...items){
+    return items.filter(item => typeof item === type);
+  }
+  filter('boolean',true,0,false);      // => [true,false]
+  filter('number',false,4,'Welcome',7) // =>[4,7]
+```
+
+- 还可以同时展开多个数组:  
+
+```
+  function myFunction(v,w,x,y,z){ }
+  var args = [0,1];
+  myFunction(-1,...args,2,...[3]);
+```
+
+- 数据结构  
+
+
+```
+  两个对象连接返回新的对象
+  let a = {aa:'aa'}
+  let b = {bb:'bb'}
+  let c = {...a,...b}
+  console.log(c)
+  // {"aa":"aa","bb":"bb"}
+```
+
+```
+  两个数组连接返回新的数组
+  let d = ['dd']
+  let e = ['ee']
+  let f = [...d,...e]
+  console.log(f)
+  // ['dd','ee']
+```
+
+```
+   在中间插入数组
+   var parts = ['shoulder','knees'];
+   var lyrics = ['head', ...parts,'and','toes']
+   // ["head", "shoulders", "knees", "and", "toes"]
+```
+
+```
+   在尾部插入数组
+   //ES5
+   var arr1 = [0,1,2];
+   var arr2 = [3,4,5];
+   //将arr2中的所有哦元素添加到arr1中
+   Array.prototype.push.appay(arr1,arr2);
+
+   //ES6
+   var arr1 = [0,1,2];
+   var arr2 = [3,4,5];
+   arr.push(...arr2);
+```
+
+- 数组加上对象返回新的数组  
+
+```
+  let g = [{gg:'gg'}]
+  let h = {hh:'hh'}
+  let i = [...g,h]
+  console.log(i)
+  // [{"gg","gg"},{"hh","hh"}]
+```
+
+- 数组+字符串  
+
+```
+  let j = ['jj']
+  let k = 'kk'
+  let l = [...j,k]
+  console.log(l)
+  // ["jj","kk"]
+```
+
+- 带有数组和对象的结合  
+
+```
+ let state = {
+   resultList:[],
+   currentPage:0,
+   totalRows:{}
+ }
+ let data = {
+  resultList:[{new:'new'}],
+  currentPage:2,
+  totalRow:{row:'row'}
+ }
+
+ let combile = {
+    ... state,
+    resultList:[
+      ...state.resultList,
+      ...data.reusltList
+    ],
+    currentPage:data.currentPage,
+    totalRows:data.totalRows
+ }
+ console.log(combile)
+ // {"resultList":[{"new":"new"}],"currentPage":2,"totalRows":{"row":"row"}}
+```
+
+
+
+
+
+
+
 
 
 
