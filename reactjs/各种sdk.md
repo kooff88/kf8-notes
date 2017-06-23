@@ -10,6 +10,7 @@
 - [promise](#promise)
 - [object-assign](#object-assign)
 - [react-cropper](#react-cropper)
+- [loading-cli](#loading-cli)
 
 
 # dotenv
@@ -350,4 +351,24 @@ objectAssign({foo: 0}, null, {bar: 1}, undefined);
       );
     }
   }
+```
+
+# loading-cli
+- 加载中动画
+
+```
+  var loading =  require('loading-cli');
+  var load = loading("loading text!!")
+   
+  load.start()
+   
+  setTimeout(function(){
+      load.color = 'yellow';
+      load.text = ' Loading rainbows';
+  },2000)
+   
+  // stop 
+  setTimeout(function(){
+      load.stop()
+  },3000)
 ```
