@@ -4,6 +4,7 @@
 - [各种遍历](#各种遍历)
 - [map](#map)
 - [es6扩展运算符](#es6扩展运算符)
+- [隐式返回值简写](#隐式返回值简写)
 
 # for-of遍历
 
@@ -482,7 +483,27 @@ function json2Map(json){
  // {"resultList":[{"new":"new"}],"currentPage":2,"totalRows":{"row":"row"}}
 ```
 
+# 隐式返回值简写
 
+```
+  function aaa(diameter){
+    return Math.PI * diameter
+  }
+
+  var func = function func(){
+    return {foo:1}
+  }
+```
+
+- 简写：
+
+```
+  aaa = diameter => (
+    Math.PI * diameter;
+  )
+
+  var func = () => ({ foo:1 })
+```
 
 
 
