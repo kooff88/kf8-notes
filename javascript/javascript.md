@@ -7,6 +7,7 @@
 - [获取网址中数字](#获取网址中数字)
 - [函数优化](#函数优化)
 - [水平滚动条](#水平滚动条)
+- [new FormData()](#new FormData())
 
 ## javascript合并两个json对象
 
@@ -149,3 +150,12 @@ Promise.all([
     overflow-x: auto
     overflow-y:hidden
 ```
+
+# new FormData()
+
+```
+  var formdata = new FormData();
+  formdata.append('name','fdipzone');
+  formdata.append('gender','male');
+```
+
