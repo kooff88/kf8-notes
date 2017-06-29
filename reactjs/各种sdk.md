@@ -11,7 +11,10 @@
 - [object-assign](#object-assign)
 - [react-cropper](#react-cropper)
 - [loading-cli](#loading-cli)
-
+- [bodyParser](#bodyParser)
+- [cross-evn安装&使用](#cross-evn安装&使用)
+- [jsonwebtoken](#jsonwebtoken)
+- [req.session.regenerate](#reqreq.session.regenerate)
 
 # dotenv
 
@@ -371,4 +374,51 @@ objectAssign({foo: 0}, null, {bar: 1}, undefined);
   setTimeout(function(){
       load.stop()
   },3000)
+```
+
+
+# bodyParser
+
+```
+- bodyParser.json(options)
+  options可选 ， 这个方法返回一个仅仅用来解析json格式的中间件。这个中间件能接受任何body中任何Unicode编码的字符。支持自动的解析gzip和 zlib
+- bodyParser.urlencoded(options)
+  options可选，这个方法也返回一个中间件，这个中间件用来解析body中的urlencoded字符， 只支持utf-8的编码的字符。同样也支持自动的解析gzip和 zlib。
+```
+
+
+# cross-evn安装&使用
+
+- 这个迷你的包能够提供一个设置环境变量的scripts，让你能够以unix方式设置环境变量，然后在windows上也能兼容运行。   
+  在NODE_ENV=xxxxxxx前面添加cross-env就可以了。   
+
+  ```例子
+  "scripts": {
+    "development": "cross-env NODE_ENV=development node ./bin/aaa",
+  },
+  ```
+
+# jsonwebtoken
+
+```
+  var JWT = require('jsonwebtoken');
+
+  exports.generateToken = function(key){
+    var payload = key || Date.now();
+    return JWT.sign(payload,Date.now() + "")
+  }
+
+  var aa = this.generateToken()
+  console.log('aa',aa)
+```
+
+# req.session.regenerate
+
+```
+  req.session.regenerate(function(){ 
+      req.session.captcha = captcha.text;
+      req.session.save();                      //保存一下修改后的Session
+      req.set('Content-Type','image/svg+xml'); //在html中动态插入 svg +xml格式文件
+      res.status(200).send(captcha.text);      //何种状态下发送什么信息
+  })
 ```
