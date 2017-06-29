@@ -7,7 +7,6 @@
 - [react中super用法](#react中super用法)
 - [javascript:伪协议问题](#javascript:伪协议问题)
 - [遍历dom树](#遍历dom树)
-- [正则 转义空格，％](#正则 转义空格，％)
 - [取到上一页面传过来的参数](#取到上一页面传过来的参数)
 - [加载 404页面](#加载 404页面)
 - [数据传输到后台](#数据传输到后台)
@@ -256,14 +255,7 @@
       );
       ```
 
-#  正则 转义空格，％
 
-    ```
-    var keyword = keyword.replace(/(^\s+)|(\s+$)/g,"")   //去除keyword两边的所有空格
-    if(keyword =="") return res.json({"code":10086, "message":"请输入要查询的内容"});
-    var reg = /%+/;     
-    var keyword=keyword.replace(/%+/,'\\%');    //将keyword 中％转义  
-    ```
 
 # 取到上一页面传过来的参数
 
