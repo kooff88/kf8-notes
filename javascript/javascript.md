@@ -8,6 +8,7 @@
 - [函数优化](#函数优化)
 - [水平滚动条](#水平滚动条)
 - [new FormData()](#new FormData())
+- [window.scrollTo](#window.scrollTo)
 
 ## javascript合并两个json对象
 
@@ -159,3 +160,12 @@ Promise.all([
   formdata.append('gender','male');
 ```
 
+
+# window.scrollTo
+
+
+```
+  function scrollWindow(){
+    window.scrollTo(100,500); //滚动到指定的坐标 x=100 y=500位置
+  }
+```
