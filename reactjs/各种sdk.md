@@ -15,6 +15,7 @@
 - [cross-evn安装&使用](#cross-evn安装&使用)
 - [jsonwebtoken](#jsonwebtoken)
 - [req.session.regenerate](#reqreq.session.regenerate)
+- [classnames](#classnames)
 
 # dotenv
 
@@ -421,4 +422,30 @@ objectAssign({foo: 0}, null, {bar: 1}, undefined);
       req.set('Content-Type','image/svg+xml'); //在html中动态插入 svg +xml格式文件
       res.status(200).send(captcha.text);      //何种状态下发送什么信息
   })
+```
+
+
+#classnames
+- className 处理工具  
+
+```
+/* components/submit-button.js */
+import { Component } from 'react';
+import classNames from 'classnames/bind';
+import styles from './submit-button.css';
+ 
+let cx = classNames.bind(styles);
+ 
+export default class SubmitButton extends Component {
+  render () {
+    let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
+    let className = cx({
+      base: true,
+      inProgress: this.props.store.submissionInProgress,
+      error: this.props.store.errorOccurred,
+      disabled: this.props.form.valid,
+    });
+    return <button className={className}>{text}</button>;
+  }
+};
 ```
