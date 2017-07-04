@@ -9,6 +9,7 @@
 - [水平滚动条](#水平滚动条)
 - [new FormData()](#new FormData())
 - [window.scrollTo](#window.scrollTo)
+- [typeof与instanceof](#typeof与instanceof)
 
 ## javascript合并两个json对象
 
@@ -168,4 +169,24 @@ Promise.all([
   function scrollWindow(){
     window.scrollTo(100,500); //滚动到指定的坐标 x=100 y=500位置
   }
+```
+
+# typeof与instanceof
+
+```
+  typeof 返回一个变量的基本类型, number,boollean,string,object,undefined,function
+
+  alert(typeof(1));//number
+  alert(typeof("abc"));//string
+  alert(typeof(true));//boolean
+  alert(typeof(m));//undefined
+
+
+  instanceof 返回以个布尔值
+  alert(a instanceof Object);  //true
+  alert(b instanceof Array);  //true
+
+  需要注意的是，instanceof只能用来判断对象和函数，不能用来判断字符串和数字等
+  var b = '123';
+  alert(b instanceof String);  //false
 ```
