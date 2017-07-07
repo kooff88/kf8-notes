@@ -10,6 +10,7 @@
 - [new FormData()](#new FormData())
 - [window.scrollTo](#window.scrollTo)
 - [typeof与instanceof](#typeof与instanceof)
+- [hasOwnProperty](#hasOwnProperty)
 
 ## javascript合并两个json对象
 
@@ -189,4 +190,12 @@ Promise.all([
   需要注意的是，instanceof只能用来判断对象和函数，不能用来判断字符串和数字等
   var b = '123';
   alert(b instanceof String);  //false
+```
+
+
+## hasOwnProperty
+- hasOwnProperty()函数用于指示一个对象自身是否具有指定名称的属性，如果有，返回true,否则返回false  
+
+```
+object.hasOwnProperty(propertyName)
 ```
