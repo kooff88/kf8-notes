@@ -165,7 +165,7 @@
 ```
  git submodule update --init --recursive # 下载的工程带有submodule
  git submodule foreach git pull # submodule 里有其他的 submodule 一次更新
- git submodule foreach git pull origin master # submodule 更新
+ git submodule foreach git pull origin master # submodule 更新  --->submodule(子仓库) foreach(循环执行git pull origin master这一条命令)
 
 
  git submodule foreach --recursive git submodule init 
