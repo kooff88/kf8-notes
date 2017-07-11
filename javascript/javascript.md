@@ -11,6 +11,7 @@
 - [window.scrollTo](#window.scrollTo)
 - [typeof与instanceof](#typeof与instanceof)
 - [hasOwnProperty](#hasOwnProperty)
+- [计算天数差](#计算天数差)
 
 ## javascript合并两个json对象
 
@@ -198,4 +199,18 @@ Promise.all([
 
 ```
 object.hasOwnProperty(propertyName)
+```
+
+
+## 计算天数差
+
+```
+var s1 = '2012-05-12';
+
+s1 = new Date(s1.replace(/-/g, "/"));
+s2 = new Date();
+
+var days = s2.getTime() - s1.getTime();
+var time = parseInt(days / (1000 * 60 * 60 * 24));
+
 ```
