@@ -12,6 +12,7 @@
 - [typeof与instanceof](#typeof与instanceof)
 - [hasOwnProperty](#hasOwnProperty)
 - [计算天数差](#计算天数差)
+- [一个月之前日期](#一个月之前日期)
 
 ## javascript合并两个json对象
 
@@ -213,4 +214,11 @@ s2 = new Date();
 var days = s2.getTime() - s1.getTime();
 var time = parseInt(days / (1000 * 60 * 60 * 24));
 
+```
+
+### 一个月之前日期
+
+```
+let nowdate = new Date()
+  nowdate.setMonth(nowdate.getMonth()-1);
 ```
