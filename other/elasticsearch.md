@@ -1,6 +1,7 @@
 # 目录
 
 - [介绍](#介绍)
+- [elasticSearch-header](#elasticSearch-header)
 - [multi_match](#multi_match)
 
 
@@ -14,6 +15,21 @@
   1.网络上的所有事物都可以被抽象为资源(resource)
   2.每一个资源都有唯一的资源标识(resource identifier)，对资源的操作不会改变这些标识
   3.所有的操作都是无状态的
+
+
+## elasticSearch-header
+
+```
+操作(起服):
+
+  git clone git://github.com/mobz/elasticsearch-head.git
+  cd elasticsearch-head
+  npm install
+  npm run start
+  open http://localhost:9100/
+```
+
+
 
 ## multi_match
 
