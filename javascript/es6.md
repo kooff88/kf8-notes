@@ -5,6 +5,7 @@
 - [map](#map)
 - [es6扩展运算符](#es6扩展运算符)
 - [隐式返回值简写](#隐式返回值简写)
+- [Object.assign()](#Object.assign())
 
 # for-of遍历
 
@@ -506,6 +507,17 @@ function json2Map(json){
 ```
 
 
+## Object.assign
+
+```
+  为对象添加多个方法
+  Object.assign(SomeClass.prototype, {
+    someMethod(arg1, arg2) {
+    },
+    anotherMethod() {
+    }
+  });​
+```
 
 
 
