@@ -16,6 +16,7 @@
 - [jsonwebtoken](#jsonwebtoken)
 - [req.session.regenerate](#reqreq.session.regenerate)
 - [classnames](#classnames)
+- [react-slick](#react-slick)
 
 # dotenv
 
@@ -448,4 +449,56 @@ export default class SubmitButton extends Component {
     return <button className={className}>{text}</button>;
   }
 };
+```
+
+# react-slick
+
+[react-slick](https://github.com/akiran/react-slick)
+
+- 轮播图的包  
+
+- 安装:  
+
+>> npm install react-slick
+
+Also install slick-carousel for css and font 
+
+>> npm install slick-carousel
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+or add cdn link in your html
+
+```
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+```
+
+Example 
+
+```
+var React = require('react');
+var Slider = require('react-slick');
+
+class SimpleSlider extends React.Component {
+  render: function () {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    return (
+      <Slider {...settings}>
+        <div><h3>1</h3></div>
+        <div><h3>2</h3></div>
+        <div><h3>3</h3></div>
+        <div><h3>4</h3></div>
+        <div><h3>5</h3></div>
+        <div><h3>6</h3></div>
+      </Slider>
+    );
+  }
+}
 ```
