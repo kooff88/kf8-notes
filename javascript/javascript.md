@@ -13,6 +13,7 @@
 - [hasOwnProperty](#hasOwnProperty)
 - [计算天数差](#计算天数差)
 - [一个月之前日期](#一个月之前日期)
+- [采用正则表达式获取地址栏参数](#采用正则表达式获取地址栏参数)
 
 ## javascript合并两个json对象
 
@@ -216,9 +217,26 @@ var time = parseInt(days / (1000 * 60 * 60 * 24));
 
 ```
 
-### 一个月之前日期
+## 一个月之前日期
 
 ```
 let nowdate = new Date()
   nowdate.setMonth(nowdate.getMonth()-1);
+```
+
+
+## 采用正则表达式获取地址栏参数
+
+```
+  
+function GetQueryString(name){
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+}
+ 
+// 调用方法
+alert(GetQueryString("参数名1"));
+alert(GetQueryString("参数名2"));
+alert(GetQueryString("参数名3"));
 ```
