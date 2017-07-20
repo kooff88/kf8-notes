@@ -333,3 +333,73 @@ element.setAttribute(className,value); //for IE
 ```
 
 PS：IE6 及更低版本不支持 removeAttribute()方法。
+
+### 跨浏览器事件Event对象
+
+```
+  <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+       #drop{
+           width: 300px;
+           height: 200px;
+           background-color: #ff0000;
+           padding: 5px;
+           border: 2px solid #000000;
+       }
+       #item{
+           width: 100px;
+           height: 100px;
+           background-color: #ffff00;
+           padding: 5px;
+           margin: 20px;
+           border: 1px dashed black;
+       }
+       *[draggable = true]{
+           -moz-user-select: none;
+           -webkit-user-select: none;
+           cursor: move;
+       }
+    </style>
+</head>
+<body>
+<div>
+    <p>将金黄色的小方块拖到红色的大方块中，不兼容IE7及以下浏览器，兼容主流浏览器！</p>
+</div>
+<div id="item" draggable="true"></div>
+<div id="drop"></div>
+
+<script type="text/javascript">
+  function listenEvent(target,type,handler){
+    if(target.addEventListener){//w3c
+      target.addEventListener(type,handler,false)
+    }else if(target.attachEvent){//IE
+      type = "on" +type;
+      target.attachEvent(type,handler,false);//IE
+    }else{
+      target["on" + type] = handler;
+    }
+  }
+
+  // 取消事件
+  function cancelEvent(e){
+    if(e.preventDefault){
+      e.preventDefault();//w3c
+    }else {
+      e.returnValue = false; //IE
+    }
+  }
+
+  // 取消传递
+  function cancelPropagation(e){
+    e.cancelPropagation();//23c
+  }
+
+
+</script>
+</body>
+</html>
+```
