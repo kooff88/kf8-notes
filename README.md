@@ -45,6 +45,7 @@
 ## redux
  - [bindActionCreators](redux,react-redux/bindActionCreators.md)
  - [react-redux中connect](redux,react-redux/react-redux中connect.md)
+ 
 ## other
  - [运用postman笔记](other/postman.md)
  - [运用redis笔记](other/redis.md)
