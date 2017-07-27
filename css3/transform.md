@@ -168,16 +168,16 @@ transform-origin并不是transform中的属性值，他具有自己的语法，�
 
 ### 透视 
 
-- 透视使transform 变形3D中最重要的内容。没有透视，3D无法实现.
+- 透视使transform 变形3D中最重要的内容。没有透视，3D无法实现.  
 
 下面以rotateX()旋转函数为例，rotateX(45deg)表示元素以x轴方向沿轴旋转45度  
-//左图是无变形和透视样式的原始效果，中图是设置变形和透视样式的效果，右图是设置变形但未设置透视样式的效果
+//左图是无变形和透视样式的原始效果，中图是设置变形和透视样式的效果，右图是设置变形但未设置透视样式的效果  
 
 ![图2](../image/transform/3d1.jpeg)
-
+  
 由以上三个图可说明，如果不设置透视，那么浏览器会将元素的3D变形操作投射垂直到2D视平面上，最终呈现出来的只是元素的宽高变化  
 
-要深入了解透视，需要观察者，被透视元素和变形元素这几个概念。
+要深入了解透视，需要观察者，被透视元素和变形元素这几个概念。  
 
 首先变形元素，就是进行transfrom3D变形的元素，主要进行transform,transform-origin,backface-visibility等属性的设置  
 
@@ -232,7 +232,7 @@ ps: 透视perspective不可取百分比，因为百分比需要相对的元素�
 透视原点perspective-origin是指观察者的位置，一般地，观察者位于与屏幕平行的另一个平面上，观察者始终是与屏幕垂直的。  
 观察者的活动区域是被观察元素的盒模型区域.  
 
-![图2](../image/transform/3d4.jpeg)
+![图2](../image/transform/3d4.jpeg)  
 
 `perspective-origin`
 
@@ -251,16 +251,16 @@ ps: 透视perspective不可取百分比，因为百分比需要相对的元素�
 > x轴 :  left 0% center: 50% right:100%  
 > y轴 :  top: 0% center: 50% bottom: 100%  
 
-2. 数值(perspective-origin 40px 20px)
+2. 数值(perspective-origin 40px 20px)  
 
-> x轴数值表示在x轴上离0点(元素边框外侧左上角)的偏移量；y轴数值表示在y轴上离0点的偏移量
+> x轴数值表示在x轴上离0点(元素边框外侧左上角)的偏移量；y轴数值表示在y轴上离0点的偏移量  
 
-3. 百分比 (perspective-origin -50% 20%)
+3. 百分比 (perspective-origin -50% 20%)  
 
 > 其中x轴的百分比相对于被透视元素的宽度和(width+横向padding+横向border),  
 > 而y轴的百分比相对于被透视元素的高度和(height+纵向padding+纵向border)  
 
-4. 单个值(当只有一个值时，默认第二个值为center)
+4. 单个值(当只有一个值时，默认第二个值为center)  
 
 ps: perspective-origin必须定义在设置perspective的元素上，也就是死活必须设置在元素的父元素或祖先元素上  
 
@@ -298,12 +298,12 @@ ps: 3d位移函数相当于matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1)
 
 ### 3d缩放
 
-3d缩放函数主要包括scaleZ()和scale3d()
+3d缩放函数主要包括scaleZ()和scale3d()  
 
-`scale3d(x,y,z)`
+`scale3d(x,y,z)`  
 默认值为scale3d(1,1,1),当参数为负数时，先翻转再缩放  
 
-`scaleZ(z)`相当于scale3d(1,1,z)
+`scaleZ(z)`相当于scale3d(1,1,z)  
 
 ps: 3d缩放函数相当于matrix3d(x,0,0,0,0,y,0,0,0,0,z,0,0,0,0,1)  
 
@@ -332,7 +332,7 @@ ps: scaleZ()和scale3d()单独使用时没有任何效果
 
 3d旋转函数蛀牙哦包括 rotateX(),rotateY(),rotateZ(),rotate3d()  
 
-`ratate3d(x,y,z,Ndeg)`
+`ratate3d(x,y,z,Ndeg)`  
 
 x,y,z分别用来描述围绕z,y,z轴旋转的矢量值。最终变形元素沿着由(0,0,0)和(x,y,z)这两个点构成的直线为轴，进行旋转。当N为正数时，  
 元素进行顺时针旋转；当N为负数时，元素进行逆时针旋转  
@@ -344,3 +344,61 @@ ps: safari浏览器不支持keyframes中改变rotate3d()
 `rotateY(Ndeg)`  相当于rotate3d(0,1,0,Ndeg)  
 
 `rotateZ(Ndeg)`  相当于rotate3d(0,0,1,Ndeg)  
+
+
+## 透视函数 
+
+上面详细介绍了透视属性perspective,但透视属性应用在变形元素的父级或祖先级。而透视函数perspective()时transform变形函数的  
+一个属性值，应用于变形元素本身  
+
+ps: 由于透视原点perspective-origin只能设置在设置了perspective透视属性的元素。若为元素设置透视函数perspective(),则透视原点  
+不起作用，观察者使用默认位置，即元素中心点对应的平面上  
+
+`perspective(<length>)`  
+
+透视函数perspective(<length>)的参数只能时长度值，长度值只能是正数  
+
+ps: 由于transform属性是从前向后的顺序解析属性的，所以一定要把perspective()函数写在其他变形函数前面，否则将没有透视效果  
+
+> transform:perspective(130px) rotateX(-120deg)  
+
+### 变形原点
+
+　2d变形原点由于没有z轴，所以z轴的值默认为0。而3d变形原点的z轴是一个可以设置的变量  
+
+`transform-origin`
+
+```
+值：x轴 y轴 z轴
+初始值 50% 50%
+应用于：非inline元素(包括block、inline-block、table、table-cell等)
+继承性：无
+```
+
+ps: IE9-浏览器不支持，safari3.1-8、android2.1-4.4.4、IOS3.2-8.4都需要添加前缀，其他更高版本浏览器可使用标准写法  
+
+对于x轴和y轴来说，可以设置关键字和百分比，分别相对于其本身元素水平方向的宽度和垂直方向的高度和；z只能设置长度值  
+
+//变形元素默认样式是 transform:rotate3d(1,1,1,45deg);  
+
+### 背景可见 
+
+元素的背面默认是可见的。但有时需要让元素背面不可见，这就要用到属性backface-visibility  
+
+`backface-visibility`: 设置元素背面是否可见  
+
+> visible:可见，默认  
+> hidden:不可见  
+ 
+//设置一个元素包含两个半透明子元素绝对定位重叠，内容分别为A和B，来表示一个元素的正面和背面  
+
+ps：若一个元素覆盖于另一个元素上，不仅仅是正面覆盖，背面也是覆盖的  
+
+### 变形风格
+
+变形风格transform-style 允许变形元素及其子元素在3d空间中呈现。变形风格由=有两个值。flat是默认值，表示2d平面  
+而perserve-3d表示3d空间  
+
+ps: 当设置了overflow:非visible或clip:非auto时，transform-style:perserve-3d失效  
+
+> transform-style:flat | preserve-3d  
