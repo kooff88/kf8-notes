@@ -1,5 +1,7 @@
 # 目录 各种sdk
 
+- [cookie-parser](#cookie-parser)
+- [morgan](#morgan)
 - [dotenv](#dotenv)
 - [chalk](#chalk)
 - [connect-history-api-fallback](#connect-history-api-fallback)
@@ -18,6 +20,127 @@
 - [classnames](#classnames)
 - [react-slick](#react-slick)
 - [react-transition-group](#react-transition-group)
+
+
+# cookie-parser
+
+- 这个插件通常当作中间件使用，app.use(cookieParser()), 这样就可以处理每一个请求的cookie。  
+
+cookie-parser的主函数cookiePaser。  
+```
+  exports =module.exports = function.cookieParser(secret,options){
+    return function cookieParser(req,res,next){ //从请求中得到req,res对象
+      if(req.cookies) return next(); //如果已经有cookie对象，则推出中间件继续运行
+      var cookies = req.headers.cookie;//从headers中取cookie
+
+      req.secret = secret; //如果有传入secret,则设置到req对象
+      req.cookies = Object.create(null) //创建空对象给req.cookies
+      req.signedCookies = Object.create(null) //创建空对象给req.signedCookies
+
+      //no cookies
+      if(!coolies){ //如果没有从headers得到cookies
+        return next()//退出中间件继续运行
+      }
+
+      req.cookies = cookies.parse(cookies,options); //调用cookies的parse方便把cookies字符串转换成cookies对象.
+
+      // parse signed cookies
+      if(secret){
+        req.signedCookies = parse.signedCookies(req.cookies,secret);
+        req.signedCookies = parse.JSONCookies(req.signedCookies);
+      }
+
+      //parse JSON cookies
+      req.cookies = parse.JSONCookies(req.cookies); //把req.cookies对象转化
+
+      next();
+    }
+  }
+
+
+```
+
+# morgan
+
+(http://www.cnblogs.com/chyingp/p/node-learning-guide-express-morgan.html)
+
+- 是express默认的日志中间件，也可以脱离express,作为node.js的日志组件单独使用  
+
+```
+  核心API 
+  morgan(),作用是返回一个express日志中间件
+
+  morgan(format,options)
+
+  参数说明：
+    1. format:可选，morgan与定义了几种日志格式，每种格式都有对应的名称，比如combined,short等，默认是default.
+    2. options:可选，配置项，包含stream(常用),skip,immediate
+    3. stream:日志输出流配置，默认时process.stdout
+    4. skip:是否跳过日志记录。
+    5. immediate:布尔值，默认是false。当为true时，一收到请求，就记录日志；如果为false,则在请求返回后，再记录日志
+
+  自定义日志格式
+  首先搞清楚morgan中两个概念：format跟token.
+    format:日志格式，本质是代表日志格式的字符串，比如 :method :url :status :res[content-length] - :response-time ms
+    token: format的组成部分，比如上面的:method  ,  :url即所谓的token 
+
+  日志格式关键API
+    * morgan.format(name,format); //自定义日志格式
+    * morgan.token(name,fn); //自定义token
+
+  自定义format
+  首先通过morgan.format()定义名为joke的日志格式，然后通过morgan('joke')调用即可.
+
+    var express = require('express');
+    var app = express();
+    var morgan = require('morgan');
+    morgan.format('joke','[joke] : method :url :status');
+
+    app.use(morganp('joke'));
+
+    app.use(function(req,res,next){
+      res.send('OK');
+    })
+
+    app.listen(3000);
+
+  上面代码运行结果：
+
+    ➜  2016.12.11-advanced-morgan git:(master) ✗ node morgan.format.js
+    [joke] GET / 304
+    [joke] GET /favicon.ico 200
+
+  自定义token
+  通过morgan.token()自定义token,然后将自定义的token,加入自定义的format中即可  
+
+    var express = require('express');
+    var app = express();
+    var morgan = require('morgan');  
+    //自定义token 
+    morgan.token('from',function(req,res){
+      return req.query.from || '-'
+    })
+
+    // 自定义format，其中包含自定义的token
+    morgan.format('joke', '[joke] :method :url :status :from');
+
+    // 使用自定义的format
+    app.use(morgan('joke'));
+
+    app.use(function(req, res, next){
+        res.send('ok');
+    });
+
+    app.listen(3000);
+
+  运行程序，并在浏览器里先后访问 http://127.0.0.1:3000/hello?from=app 和 http://127.0.0.1:3000/hello?from=pc
+  
+    ➜  2016.12.11-advanced-morgan git:(master) ✗ node morgan.token.js 
+    [joke] GET /hello?from=app 200 app
+    [joke] GET /favicon.ico 304 -
+    [joke] GET /hello?from=pc 200 pc
+    [joke] GET /favicon.ico 304 -  
+```
 
 
 # dotenv
