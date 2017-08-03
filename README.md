@@ -31,6 +31,7 @@
 
 ## linux
 - [mac常用命令](linux/mac常用命令.md)
+- [虚拟机安装](linux/虚拟机.md)
 
 
 ## REACT.JS
