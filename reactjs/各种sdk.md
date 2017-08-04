@@ -20,6 +20,7 @@
 - [classnames](#classnames)
 - [react-slick](#react-slick)
 - [react-transition-group](#react-transition-group)
+- [multer](#multer)
 
 
 # cookie-parser
@@ -659,5 +660,44 @@ const Fade = ({ in: inProp }) => (
     )}
   </Transition>
 );
+```
+
+# multer
+
+- 图片上传模块(node)  
+
+```
+单图上传
+  
+  /* app.js
+    var fs = require('fs');
+    var express = require('express');
+    var multer  = require('multer')
+
+    var app = express();
+    var upload = multer({dest:'upload/'})
+
+    //单图上传
+
+    app.post('/upload',upload.single('logo'),function(req,res,next){
+      res.send({ret_code:'0'})
+    })
+
+    app.get('/form',function(req,res,next){
+      var form = fs.readFileSync('./form.html',{encoding:'utf8'})
+      res.send(form)
+    });
+
+    app.listen(3000);
+  */
+
+  /* form.html
+    <form action="/upload-single" method="post" enctype="multipart/form-data">
+      <h2>单图上传</h2>
+      <input type="file" name="logo">
+      <input type="submit" value="提交">
+    </form>
+  */
+
 ```
 
