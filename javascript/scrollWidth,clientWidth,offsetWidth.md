@@ -9,7 +9,7 @@
 srcollWidth = clientWidth,两者皆为内容可视区的宽度。  
 offsetWidth为元素的实际宽度。   
 
-![../image/对象宽度/p1.jpeg](#../image/对象宽度/p1.jpeg)
+![图一](../image/对象宽度/p1.jpeg)
 
 情况2:  
 元素的内容超过可视区，滚动条出现和可用的情况下。  
@@ -18,4 +18,4 @@ scrollWidth为实际内容的宽度。
 clientWidth时内容可视区的宽度。  
 offsetWidth时元素的实际宽度.  
 
-![../image/对象宽度/p2.jpeg](#../image/对象宽度/p2.jpeg)
+![图二](../image/对象宽度/p2.jpeg)
