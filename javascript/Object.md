@@ -4,6 +4,7 @@
 
 ## Object.assign
 
+
 - 此方法用于将所有可枚举的属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。  
 
 ##### 语法
@@ -108,3 +109,21 @@ symbol数据类型是一个primitive data type.
 typeof sym;     // "symbol"  
 var symObj = Object(sym);  
 typeof symObj;  // "object"  
+
+#### 继承属性和不可枚举属性是不能拷贝的
+
+```
+var obj = Object.create({foo: 1}, { // foo 是个继承属性。
+    bar: {
+        value: 2  // bar 是个不可枚举属性。
+    },
+    baz: {
+        value: 3,
+        enumerable: true  // baz 是个自身可枚举属性。
+    }
+});
+
+var copy = Object.assign({}, obj);
+console.log(copy); // { baz: 3 }
+```
+
