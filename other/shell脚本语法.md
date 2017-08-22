@@ -38,6 +38,12 @@ else
  if [ int1 -lt int2 ] 如果<
 ```
 
+```
+ a.js  >> $ b.log    表示将a.js内容 写入b.log日志
+ a.js > b.js         表示将 a.js内容覆盖b.js 
+```
+
+
 - 字符串变量表达式
 ```
  if [ $a = $b ] 如果string1等于string2 (字符串允许使用赋值号做等号)
@@ -508,3 +514,5 @@ cp ifcfg-eth1.bridge /etc/sysconfig/network-scripts/ifcfg-eth1
 
   wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
   ```
+
+
