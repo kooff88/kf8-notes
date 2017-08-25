@@ -20,6 +20,7 @@
 - [splice](#splice)
 - [event.clientX,event.clientY](#event.clientX,event.clientY)
 - [获取url参数](#获取url参数)
+- [arr.unshift](#arr.unshift)
 
 
 ## javascript合并两个json对象
@@ -342,4 +343,19 @@ function getUrlParam(name){
   var r = window.location.search.substr(1).match(reg);  //匹配目标参数
   if (r!=null) return unescape(r[2]); return null; //返回参数值
 } 
+```
+
+## arr.unshift
+
+```
+  <script type='text/javascript'>
+    var arr = new Array()
+    arr[0] = "apple"
+    arr[1] = "orange"
+    arr[2] = "banana"
+
+    document.write(arr+ "<br/>")
+    document.write(arr.unshift("pear") + "<br/>")
+    document.write(arr)   ---->>  (apple,orange,banana,pear)
+  </srcipt>
 ```
