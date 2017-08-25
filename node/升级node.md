@@ -10,7 +10,7 @@
   sudo npm install -g n  
 
 4. 第四步：安装最新版本的node.js  
-  sudo n. stable  
+  sudo n stable  
 
 5. 再次查看本机的node.js版本  
    node -v  
