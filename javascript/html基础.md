@@ -2,6 +2,7 @@
 
 - [CRLF](#CRLF)
 - [thead,tbody,tfoot](#thead,tbody,tfoot)
+- [colgroup标签](#colgroup标签)
 
 ## CRLF
 
@@ -42,3 +43,26 @@
 - 字面理解分别是  表格的头，身体和脚。  
 tbody 这个标签可以控制表格分行下载，可以让其中的内容比网页中别的东西(如图片)先下载下来  
 这样可以让别人先看到网页的实质性的内容，不用等那么久了，在需要分行下载处加上<tbody>和</tbody>  
+
+## colgroup
+
+<colgroup>标签 用于对表格中的列进行组合，以便对其进行格式化。  
+如需对全部列应用样式，<colgroup> 标签很有用，这样就不需要对各个单元和各行重复应用样式了。  
+<colgroup> 标签只能在 table 元素中使用。  
+
+```
+<table width="100%" border="1">
+  <colgroup span="2" align="left"></colgroup>
+  <colgroup align="right" style="color:#0000FF;"></colgroup>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>3476896</td>
+    <td>My first HTML</td>
+    <td>$53</td>
+  </tr>
+</table>
+```
