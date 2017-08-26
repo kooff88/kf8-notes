@@ -22,6 +22,7 @@
 - [react-transition-group](#react-transition-group)
 - [multer](#multer)
 - [react-thunk](#react-thunk)
+- [async-validator](#async-validator)
 
 
 # cookie-parser
@@ -748,4 +749,23 @@ const Fade = ({ in: inProp }) => (
 ```
 
 
+## async-validator
+- 验证包 
+
+```
+var schema = require('async-validator');
+var descriptor = {
+  name: {type: "string", required: true}
+}
+var validator = new schema(descriptor);
+validator.validate({name: "muji"}, (errors, fields) => {
+  if(errors) {
+    // validation failed, errors is an array of all errors
+    // fields is an object keyed by field name with an array of
+    // errors per field
+    return handleErrors(errors, fields);
+  }
+  // validation passed
+});
+```
 
