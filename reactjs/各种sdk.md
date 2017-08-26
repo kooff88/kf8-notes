@@ -21,6 +21,7 @@
 - [react-slick](#react-slick)
 - [react-transition-group](#react-transition-group)
 - [multer](#multer)
+- [react-thunk](#react-thunk)
 
 
 # cookie-parser
@@ -700,4 +701,51 @@ const Fade = ({ in: inProp }) => (
   */
 
 ```
+
+## react-thunk
+
+```
+  源码:
+
+  function createThunkMiddleware(extraArgument){
+    return ({ dispatch,getState }) => next => action => {
+      if (typeof action==='function'){
+        return action(dispatch,getState,extraArgument)
+      }
+
+      return next(action);
+    }
+  }
+
+  const thunk = createThunkMiddleware();
+  thunk.withExtraArgument = createThunkMiddleware;
+
+  export default thunk;
+
+```
+
+上 是redux-thunk所有的源代码，默认情况下redux只能dispatch一个plain object,例如  
+
+```
+  dispatch ({
+    type:'SOME_ACTION_TYPE',
+    data : 'xxxx'
+  })
+```
+
+使用redux-thunk之后，可以dispatch一个函数了，这个函数会接受dispatch,getState作为参数，在这个函数里尼就可以干  
+你想干的事情，在任何地方随意dispatch了，例如下面这个ajax请求:  
+
+```
+  dispatch(function(dispatch){
+    $.get('/api/users',function(users){
+      dispatch({
+        type:"FETCH_USERS_SUCCESS",
+        users:users
+      })
+    })
+  })
+```
+
+
 
