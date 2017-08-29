@@ -24,6 +24,7 @@
 - [react-thunk](#react-thunk)
 - [async-validator](#async-validator)
 - [object-assign](#object-assign)
+- [hotkeys-js](#hotkeys-js)
 
 
 # cookie-parser
@@ -789,4 +790,49 @@ objectAssign({foo: 0}, {foo: 1}, {foo: 2});
 // ignores null and undefined sources 
 objectAssign({foo: 0}, null, {bar: 1}, undefined);
 //=> {foo: 0, bar: 1}
+```
+
+## hotkeys-js
+
+设置快捷键  
+
+react 使用  
+
+```
+import React, { Component } from 'react';
+import Hotkeys from 'react-hot-keys';
+ 
+export default class HotkeysDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      output: 'Hello, I am a component that listens to keydown and keyup of a',
+    }
+  }
+  onKeyUp(keyName, e, handle) {
+    console.log("test:onKeyUp", e, handle)
+    this.setState({
+      output: `onKeyUp ${keyName}`,
+    });
+  }
+  onKeyDown(keyName, e, handle) {
+    console.log("test:onKeyDown", keyName, e, handle)
+    this.setState({
+      output: `onKeyDown ${keyName}`,
+    });
+  }
+  render() {
+    return (
+      <Hotkeys 
+        keyName="shift+a,alt+s" 
+        onKeyDown={this.onKeyDown.bind(this)}
+        onKeyUp={this.onKeyUp.bind(this)}
+      >
+        <div style={{ padding: "50px" }}>
+          {this.state.output}
+        </div>
+      </Hotkeys>
+    )
+  }
+}
 ```
