@@ -796,7 +796,7 @@ objectAssign({foo: 0}, null, {bar: 1}, undefined);
 
 设置快捷键  
 
-react 使用  
+react 使用   
 
 ```
 import React, { Component } from 'react';
