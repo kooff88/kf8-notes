@@ -25,6 +25,7 @@
 - [async-validator](#async-validator)
 - [object-assign](#object-assign)
 - [hotkeys-js](#hotkeys-js)
+- [express-sessions](#express-sessions)
 
 
 # cookie-parser
@@ -835,4 +836,15 @@ export default class HotkeysDemo extends Component {
     )
   }
 }
+```
+
+## express-sessions
+
+```
+  app.use(express.session({
+    secret:'a4f8071f-c873-4447-8ee2',
+    cookie:{maxAge:2628000000},
+    resave: false,
+    saveUninitialized: true,
+  }))
 ```
