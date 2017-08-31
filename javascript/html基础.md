@@ -3,6 +3,7 @@
 - [CRLF](#CRLF)
 - [thead,tbody,tfoot](#thead,tbody,tfoot)
 - [colgroup标签](#colgroup标签)
+- [label标签](#label标签)
 
 ## CRLF
 
@@ -65,4 +66,27 @@ tbody 这个标签可以控制表格分行下载，可以让其中的内容比�
     <td>$53</td>
   </tr>
 </table>
+```
+
+
+## label标签
+
+在用户注册的时候，常常用户点击文字就需要将光标聚焦到对应的表单上面，依靠<label>标签的for属性可以实现  
+
+```
+...
+
+  <table>
+      <tr>
+        <td><label for="username">用户名：</label></td>
+        <td><input type='text' name='username' id='username' /></td>
+      </tr>
+      <tr>
+        <td><label for="password">用户名：</label></td>
+        <td><input type='password' name='password' id='password' /></td>
+      </tr>
+  </label>
+
+...
+
 ```
