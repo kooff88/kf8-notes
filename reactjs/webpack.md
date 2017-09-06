@@ -1,6 +1,7 @@
 ### 目录
 
 - [webpack](#webpack)
+- [sourcemap](#sourcemap)
 
 # webpack
 
@@ -133,3 +134,43 @@
 - HtmlWebpackPlugin  
   这个插件依据一个简单的模版m,最终生成Html5文件,这个文件中自动引用了你的大包后的js文件,  
   每次编辑都在文件名中插入一个不同的哈希值  
+
+## sourcemap
+
+难用 ，有七种!  
+
+- eval : 文档解释的很明白，每个模块都封装到eval包裹起来，并在后面加 //# sourceURL  
+
+- source-map : 这时最原始的source-map实现方式，其实现在是打包代码同时创建一个新的sourcemap文件，并在打包文件的末尾添加  
+  //# sourcemap  注释行告诉JS引擎文件在哪儿  
+
+- hidden-source-map 文档上也说了，就是sourcemap但没注释，没注释怎么找文件呢？貌似只能靠后缀，譬如  
+  xx/bundle.js文件，某些引擎会尝试去找 xxx/bundle.js.map  
+
+- inline-source-map 为每个文件添加sourcemap的DataUrl,注意这里的文件是打包前的每一个文件而不是最后打包出来的，  
+  同时这个DataUrl是包含一个文件完整sourcemap信息的Base64格式化后的字符串，而不是一个url.  
+
+- eval-source-map : 这个就是把eval的sourceURL换成了完整sourcemap信息的DataUrl  
+
+- cheap-source-map : 不包含列信息，不包含loader的sourcemap,(譬如 babel的sourcemap)  
+
+- cheap-module-source-map : 不包含列信息，同时loader的sourcemap也被简化为只包含对应行的。最终的sourcemap只有一份  
+  它是webpack对 loader生产的sourcemap进行简化，然后再次生成的。  
+
+webpack不仅支持这7种，而且他们还是可以任意组合的，就如文档所说，你可以设置sourcemap选项为cheap-module-inline-source-map.  
+
+cheap-module-eval-source-map 绝大多数情况下都会是最好的选择，这也是下版本 webpack 的默认选项。  
+
+
+相关解释：  
+
+1. 大部分情况我们调试并不关心列信息，而且就算sourcemap没有列，有些浏览器引擎(例如v8)也会给出列信息，所以我们使用cheap模式可以  
+  大幅度提高sourcemap生成的效率  
+
+2. 使用eval方式可以大幅度提升构建效率，这对经常需要边改边调的前端开发而言，非常重要！  
+
+3. 使用module可支持babel这种编译工具(在webpack里做为loader).  
+
+4. eval-source-map使用DataUrl本身包含完整sourcemap信息，并不需要像sourceURL那样，浏览器需要发送一个完整请求  
+   去获取sourcemap文件，这会略微提高点效率  
+
