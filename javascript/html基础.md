@@ -5,6 +5,7 @@
 - [colgroup标签](#colgroup标签)
 - [label标签](#label标签)
 - [kbd标签](#kbd标签)
+- [HTML DOM querySelector方法](#HTML DOM querySelector方法)
 
 ## CRLF
 
@@ -105,4 +106,20 @@ tbody 这个标签可以控制表格分行下载，可以让其中的内容比�
   栗子:
 
   键入<kbd>quit</kbd> 来退出程序,或者键入<kbd>menu</kbd> 来返回主菜单。
+```
+
+
+## HTML DOM querySelector方法
+
+```
+  获取文档中id = "demo" 的元素
+  document.querySelector("#demo")
+
+  querySelector()方法返回文档中匹配指定css选择器的一个元素.
+
+  ps : querySelector()方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有元素，请使用querySelectorAll()方法替代
+
+  获取文档中第一个<p>元素:
+  document.querySelector("p");
+
 ```
