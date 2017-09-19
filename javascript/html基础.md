@@ -6,6 +6,7 @@
 - [label标签](#label标签)
 - [kbd标签](#kbd标签)
 - [HTML DOM querySelector方法](#HTML DOM querySelector方法)
+- [transitionend事件](#transitionend事件)
 
 ## CRLF
 
@@ -122,4 +123,55 @@ tbody 这个标签可以控制表格分行下载，可以让其中的内容比�
   获取文档中第一个<p>元素:
   document.querySelector("p");
 
+```
+
+
+## transitionend事件
+
+```
+  该事件在css 完成过渡后触发 
+  ps : 如果过渡在完成前移除，例如 css transition-property 属性被移除，过渡事件将不被触发。
+
+
+```
+
+举个栗子：
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style> 
+#myDIV {
+    width: 100px;
+    height: 100px;
+    background: red;
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+#myDIV:hover {
+    width: 400px;
+}
+</style>
+</head>
+<body>
+
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<div id="myDIV"></div>
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+<script>
+//  Safari 3.1 到 6.0 版本代码
+document.getElementById("myDIV").addEventListener("webkitTransitionEnd", myFunction);
+// 标准语法
+document.getElementById("myDIV").addEventListener("transitionend", myFunction);
+function myFunction() {
+    this.innerHTML = "过渡事件触发 - 过渡已完成";
+    this.style.backgroundColor = "pink";
+}
+</script>
+
+</body>
+</html>
 ```
