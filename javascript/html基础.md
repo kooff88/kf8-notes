@@ -5,7 +5,7 @@
 - [colgroup标签](#colgroup标签)
 - [label标签](#label标签)
 - [kbd标签](#kbd标签)
-- [HTML DOM querySelector方法](#HTML DOM querySelector方法)
+- [querySelector方法](#querySelector方法)
 - [transitionend事件](#transitionend事件)
 - [video标签](#video标签)
 
@@ -188,3 +188,52 @@ function myFunction() {
   var x = document.createElement('VIDEO')
 ```
 
+Video 对象属性
+
+```
+    
+  audioTracks                  返回表示可用音频轨道的AudioTrackList对象
+  audioplay                    设置或返回是否在就绪（加载完成）后即播放视频
+  buffered                     返回表示视频已缓冲部分的TimeRanges对象
+  controller                   返回表示视频当前媒体控制器的MediaController对象
+  controls                     设置或返回视频是否应该显示控件(比如播放/暂停等)
+  crossOrigin                  设置或返回视频的CORS设置
+  currentTime                  设置或返回视频中的当前播放位置(以秒算)
+  defaultMuted                 设置或返回视频默认是否静音
+  defaultPlaybackRate          设置或返回视频的默认播放速度
+  duration                     返回视频的长度(以秒算)
+  ended                        返回视频的播放是否已结束
+  error                        返回表示视频错误状态的MediaError对象
+  height                       设置或返回视频的height属性的值
+  loop                         设置或返回视频是否应在结束时再次播放
+  mediaGroup                   设置或返回视频所属媒介组合的名称
+  muted                        设置或返回是否关闭声音
+  networkState                 返回视频的当前网络状态
+  paused                       设置或返回视频是否暂停
+  playbackRate                 设置或返回视频拍播放的速度
+  played                       返回表示视频已播放部分的TimeRanges对象
+  poster                       设置或返回视频的poster属性的值
+  preload                      设置或返回视频的preload属性的值
+  readyState                   返回视频当前的就绪状态
+  seekable                     返回表示视频可寻址部分的TimeRanges对象
+  seeking                      返回用户当前是否正在视频中进行查找
+  src                          设置或返回视频的src属性的值
+  startDate                    返回表示当前时间偏移的Date对象
+  textTracks                   返回表示可用文本轨道的TextTrackList对象
+  videoTracks                  返回表示可用视频轨道的VideoTrackList对象
+  volume                       设置或返回视频的音量
+  width                        设置或返回视频的width属性的值
+
+```
+
+
+video对象方法
+
+```
+
+  addTextTrack()               向视频添加新的文本轨道
+  canPlayType()                检查浏览器是否能够播放指定的视频类型
+  load()                       重新加载视频元素
+  play()                       开始播放视频
+  pause()                      暂停当前播放的视频
+```
