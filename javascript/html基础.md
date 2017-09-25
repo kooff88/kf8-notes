@@ -7,6 +7,7 @@
 - [kbd标签](#kbd标签)
 - [HTML DOM querySelector方法](#HTML DOM querySelector方法)
 - [transitionend事件](#transitionend事件)
+- [video标签](#video标签)
 
 ## CRLF
 
@@ -175,3 +176,15 @@ function myFunction() {
 </body>
 </html>
 ```
+
+
+## video标签
+
+视频标签
+
+您可以通过使用document.createElement()方法来创建<video>元素:
+
+```
+  var x = document.createElement('VIDEO')
+```
+
