@@ -1,5 +1,10 @@
 # 目录  
-
+- [采用正则表达式获取地址栏参数](#采用正则表达式获取地址栏参数)
+- [获取网址中数字](#获取网址中数字)
+- [获取url参数](#获取url参数)
+- [event.clientX,event.clientY](#event.clientX,event.clientY)
+- [window.scrollTo](#window.scrollTo)
+- [水平滚动条](#水平滚动条)
 - [CRLF](#CRLF)
 - [thead,tbody,tfoot](#thead,tbody,tfoot)
 - [colgroup标签](#colgroup标签)
@@ -8,6 +13,79 @@
 - [querySelector方法](#querySelector方法)
 - [transitionend事件](#transitionend事件)
 - [video标签](#video标签)
+- [scrollWidth,clientWidth,offsetWidth区别](#scrollWidth,clientWidth,offsetWidth区别)
+- [元素节点，属性节点，文本节点](#元素节点，属性节点，文本节点)
+
+## 采用正则表达式获取地址栏参数
+
+```
+  
+function GetQueryString(name){
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+}
+ 
+// 调用方法
+alert(GetQueryString("参数名1"));
+alert(GetQueryString("参数名2"));
+alert(GetQueryString("参数名3"));
+```
+
+## 获取url参数
+```
+function getUrlParam(name){
+  var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+  if (r!=null) return unescape(r[2]); return null; //返回参数值
+} 
+```
+
+
+
+## 获取网址中数字
+
+```
+  var str=location.pathname;
+  var  m=str.match(/\/aaa\/([0-9]+)/);
+```
+
+```
+  react : (在框架配置好)
+  this.props.match.params.id,
+  
+```
+
+
+## event.clientX,event.clientY
+
+- 事件属性   
+  返回当事件被触发时鼠标指针向对于浏览器页面(客户区)的水平（垂直）坐标。  
+
+```
+  event.clientX
+  event.clientY
+```
+
+
+# window.scrollTo
+
+```
+  function scrollWindow(){
+    window.scrollTo(100,500); //滚动到指定的坐标 x=100 y=500位置
+  }
+```
+
+
+# 水平滚动条
+
+```
+ css: 
+    overflow-x:scroll
+    overflow-x: auto
+    overflow-y:hidden
+```
+
 
 ## CRLF
 
@@ -237,3 +315,140 @@ video对象方法
   play()                       开始播放视频
   pause()                      暂停当前播放的视频
 ```
+
+## scrollWidth,clientWidth,offsetWidth区别
+- scrollWidth: 对象的实际内容，不包边线宽度，会随对象中内容超过可视区后而变大。  
+- clientWidth: 对象内容的可视区的宽度，不包滚动条等边线，会随对象显示大小的变化而变化。  
+- offsetWidth: 对象整体的实际宽度，包括滚动条等边线，会随对象显示大小的变化而变化。  
+
+
+```
+情况1:  
+元素内无内容或者内容不超过可视区，滚动不出现或不可用的情况。  
+srcollWidth = clientWidth,两者皆为内容可视区的宽度。  
+offsetWidth为元素的实际宽度。   
+```
+
+![图一](../image/对象宽度/p1.jpeg)  
+
+
+```
+情况2:  
+元素的内容超过可视区，滚动条出现和可用的情况下。  
+scrollWidth>clientWidth.  
+scrollWidth为实际内容的宽度。  
+clientWidth时内容可视区的宽度。  
+offsetWidth时元素的实际宽度.  
+
+```
+
+![图二](../image/对象宽度/p2.jpeg)  
+
+
+## 元素节点，属性节点，文本节点
+
+#### 元素节点
+
+```
+import React from 'react'
+
+export default class Node extends React.Component{
+
+  onClick = () =>{
+    var d = document.getElementById("john");
+    console.log(d.nodeType)  
+    console.log(d.nodeName)
+    console.log(d.nodeValue)
+  }
+
+  render(){
+    return (
+      <div>
+        <p id="join" name="myname">John</p>
+        <p>Doe</p>
+        <p id='jack'>Jack</p>
+
+        <button onClick={()=>this.onClick}>
+      </div>
+    )
+  }
+}
+```
+
+- 运行结果，三个属性值分别是:  
+
+>>nodeType:ELEMENT_NODE  
+>>nodeType值:1  
+>>nodeName:元素标记名 //此处为p  
+>>nodeValue:null  
+
+
+#### 属性节点
+
+```
+import React from 'react'
+
+export default class Node extends React.Component{
+
+  onClick = () =>{
+    var d = document.getElementById("john").getAttributeNode("name");
+    console.log(d.nodeType)  
+    console.log(d.nodeName)
+    console.log(d.nodeValue)
+  }
+
+  render(){
+    return (
+      <div>
+        <p id="join" name="myname">John</p>
+        <p>Doe</p>
+        <p id='jack'>Jack</p>
+
+        <button onClick={()=>this.onClick}>
+      </div>
+    )
+  }
+}
+```
+
+- 运行结果，三个属性值分别是:  
+
+>>nodeType:ATTRIBUTE_NODE  
+>>nodeType值:2  
+>>nodeName:属性名 //name  
+>>nodeValue:属性值 //myname  
+
+#### 文本节点
+
+```
+import React from 'react'
+
+export default class Node extends React.Component{
+
+  onClick = () =>{
+    var d = document.getElementByTagName("p")[0].firstChild;
+    console.log(d.nodeType)  
+    console.log(d.nodeName)
+    console.log(d.nodeValue)
+  }
+
+  render(){
+    return (
+      <div>
+        <p id="join" name="myname">John</p>
+        <p>Doe</p>
+        <p id='jack'>Jack</p>
+
+        <button onClick={()=>this.onClick}>
+      </div>
+    )
+  }
+}
+```
+
+- 运行结果，三个属性值分别是:  
+
+>>nodeType:TEXT_NODE  
+>>nodeType值:3  
+>>nodeName: #text  
+>>nodeValue:文本内容 //John  

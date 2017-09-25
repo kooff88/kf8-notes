@@ -1,44 +1,16 @@
 ## 目录  
 
-- [javascript合并两个json对象](#javascript合并两个json对象)
 - [Promise(es6)](#Promise(es6))
 - [Promise.all](#Promise.all)
 - [js 小写字符串转换为大写字母](#js 小写字符串转换为大写字母)
-- [获取网址中数字](#获取网址中数字)
 - [函数优化](#函数优化)
-- [水平滚动条](#水平滚动条)
 - [new FormData()](#new FormData())
-- [window.scrollTo](#window.scrollTo)
 - [typeof与instanceof](#typeof与instanceof)
-- [hasOwnProperty](#hasOwnProperty)
 - [计算天数差](#计算天数差)
 - [一个月之前日期](#一个月之前日期)
-- [采用正则表达式获取地址栏参数](#采用正则表达式获取地址栏参数)
 - [().toString(36)](#().toString(36))
 - [获取文件类型](#获取文件类型)
 - [preventDefault](#preventDefault)
-- [splice](#splice)
-- [event.clientX,event.clientY](#event.clientX,event.clientY)
-- [获取url参数](#获取url参数)
-- [arr.unshift](#arr.unshift)
-
-
-## javascript合并两个json对象
-
-```
-  $.mergeJsonObject = function(jsonobject1,jsonobject2){
-    var resultJsonObject = {};
-    for(var attr in jsonobject1){
-      resultJsonObject[attr] = jsonobject1[attr];
-    }  
-    for(var attr in jsonobject2){
-      resultJsonObject[attr]=jsonobject2[attr];
-    }
-
-    return resultJsonObject;
-  }
-
-```
 
 ## Promise(es6)
 
@@ -113,18 +85,7 @@ Promise.all([
 
 ```
 
-## 获取网址中数字
 
-```
-  var str=location.pathname;
-  var  m=str.match(/\/aaa\/([0-9]+)/);
-```
-
-```
-  react : (在框架配置好)
-  this.props.match.params.id,
-  
-```
 
 ## 函数优化
 
@@ -156,14 +117,6 @@ Promise.all([
 
 ```
 
-# 水平滚动条
-
-```
- css: 
-    overflow-x:scroll
-    overflow-x: auto
-    overflow-y:hidden
-```
 
 # new FormData()
 
@@ -174,14 +127,6 @@ Promise.all([
 ```
 
 
-# window.scrollTo
-
-
-```
-  function scrollWindow(){
-    window.scrollTo(100,500); //滚动到指定的坐标 x=100 y=500位置
-  }
-```
 
 # typeof与instanceof
 
@@ -204,12 +149,6 @@ Promise.all([
 ```
 
 
-## hasOwnProperty
-- hasOwnProperty()函数用于指示一个对象自身是否具有指定名称的属性，如果有，返回true,否则返回false  
-
-```
-object.hasOwnProperty(propertyName)
-```
 
 
 ## 计算天数差
@@ -232,22 +171,6 @@ let nowdate = new Date()
   nowdate.setMonth(nowdate.getMonth()-1);
 ```
 
-
-## 采用正则表达式获取地址栏参数
-
-```
-  
-function GetQueryString(name){
-   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-   var r = window.location.search.substr(1).match(reg);
-   if(r!=null)return  unescape(r[2]); return null;
-}
- 
-// 调用方法
-alert(GetQueryString("参数名1"));
-alert(GetQueryString("参数名2"));
-alert(GetQueryString("参数名3"));
-```
 
 
 ## ().toString(36)
@@ -281,81 +204,5 @@ file.mimetype
   可以调用人意的事件句柄，通过调用该方法，可以阻止提交表单。注意，如果Event对象的cancelable属性是false,那么久没有默认动作,  
   或者不能阻止默认动作。无论哪种情况，调用该方法都没有作用.  
 
-## splice
-
-- splice()方法向／从数组中添加／删除项目，然后返回被删除的项目
-
-```
-语法：
-  arrayObject.splice(index,howmany,item1,......,itemX)
-```
-
-```
-  参数               描述
-  index             必须。整数，规定添加／删除项目的位置，使用负数可从数组结尾处规定位置。
-  howmany           必须。要删除的项目数量。如果设置为0，则不会删除项目。
-  item1,...,itemX   可选。向数组添加的新项目 
-```
-
-栗子：
-```
-  <script type="text/javascript">
-
-var arr = new Array(6)
-arr[0] = "George"
-arr[1] = "John"
-arr[2] = "Thomas"
-arr[3] = "James"
-arr[4] = "Adrew"
-arr[5] = "Martin"
-
-document.write(arr + "<br />")
-arr.splice(2,0,"William")
-document.write(arr + "<br />")
-
-</script>
 
 
-...
-
-输出：
-
-George,John,Thomas,James,Adrew,Martin
-George,John,William,Thomas,James,Adrew,Martin
-
-```
-
-## event.clientX,event.clientY
-
-- 事件属性   
-  返回当事件被触发时鼠标指针向对于浏览器页面(客户区)的水平（垂直）坐标。  
-
-```
-  event.clientX
-  event.clientY
-```
-
-
-## 获取url参数
-```
-function getUrlParam(name){
-  var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-  if (r!=null) return unescape(r[2]); return null; //返回参数值
-} 
-```
-
-## arr.unshift
-
-```
-  <script type='text/javascript'>
-    var arr = new Array()
-    arr[0] = "apple"
-    arr[1] = "orange"
-    arr[2] = "banana"
-
-    document.write(arr+ "<br/>")
-    document.write(arr.unshift("pear") + "<br/>")
-    document.write(arr)   ---->>  (apple,orange,banana,pear)
-  </srcipt>
-```
