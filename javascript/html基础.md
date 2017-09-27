@@ -15,6 +15,7 @@
 - [video标签](#video标签)
 - [scrollWidth,clientWidth,offsetWidth区别](#scrollWidth,clientWidth,offsetWidth区别)
 - [元素节点，属性节点，文本节点](#元素节点，属性节点，文本节点)
+- [contenteditable](#contenteditable)
 
 ## 采用正则表达式获取地址栏参数
 
@@ -452,3 +453,15 @@ export default class Node extends React.Component{
 >>nodeType值:3  
 >>nodeName: #text  
 >>nodeValue:文本内容 //John  
+
+
+## contenteditable
+
+改属性规定是否可编辑元素的内容  
+
+```
+  true : 可编辑
+  false: 不可编辑
+
+  <p contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</p>
+```
