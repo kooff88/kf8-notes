@@ -11,6 +11,7 @@
 - [().toString(36)](#().toString(36))
 - [获取文件类型](#获取文件类型)
 - [preventDefault](#preventDefault)
+- [case穿透](#case穿透)
 
 ## Promise(es6)
 
@@ -204,5 +205,7 @@ file.mimetype
   可以调用人意的事件句柄，通过调用该方法，可以阻止提交表单。注意，如果Event对象的cancelable属性是false,那么久没有默认动作,  
   或者不能阻止默认动作。无论哪种情况，调用该方法都没有作用.  
 
+## case穿透
 
-
+case穿透就是从条件语句符合的case开始执行，直到读取到break结束。  
+没有break的话就会一直读取下一个case，直到该switch语句结束
