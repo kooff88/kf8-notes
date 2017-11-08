@@ -16,6 +16,7 @@
 - [scrollWidth,clientWidth,offsetWidth区别](#scrollWidth,clientWidth,offsetWidth区别)
 - [元素节点，属性节点，文本节点](#元素节点，属性节点，文本节点)
 - [contenteditable](#contenteditable)
+- [事件句柄](#事件句柄)
 
 ## 采用正则表达式获取地址栏参数
 
@@ -464,4 +465,13 @@ export default class Node extends React.Component{
   false: 不可编辑
 
   <p contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</p>
+```
+
+
+## 事件句柄
+
+```
+事件句柄 是指 事件发生时要进行的操作
+
+(又称事件处理函数),每一个事件均对应一个事件句柄，在程序执行时，将相应的函数或语句指定给事件句柄
 ```
