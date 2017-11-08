@@ -250,3 +250,213 @@ onunload 事件在用户退出页面时发生
 <body onunload="alert('The onunload event was triggered')">
 </body> 
 ```
+
+
+### 鼠标/键盘属性
+
+- altKey
+```
+altKey 事件属性返回一个布尔值。指示在指定的事件发生时，Alt 键是否被按下并保持住了。
+
+function isKeyPressed(event){
+  alert("The ALT key was pressed!")
+}else{
+  alert("The ALT key was Not pressed!")
+}
+
+<body onmousedown="isKeyPressed(event)">
+
+<p>Click somewhere in the document.
+An alert box will tell you if you 
+pressed the ALT key or not.</p>
+
+</body>
+```
+
+
+- button
+```
+button事件属性可返回一个整数，指示当事件被触发时哪个鼠标按键被点击。
+
+event.button = 0|1|2
+
+0 规定鼠标左键
+1 规定鼠标中键
+2 规定鼠标右键
+
+Internet Explorer 拥有不同的参数：
+
+0 规定鼠标左键
+4规定鼠标中键
+2 规定鼠标右键
+
+
+function whichButton (event){
+  if(event.button === 2){
+    alert("You clicked the right mouse button!")
+  }else {
+    alert("You clicked the left mouse button!")
+  }
+}
+
+<body onmousedown="whichButton(event)">
+<p>Click in the document. An alert box will 
+alert which mouse button you clicked.</p>
+</body>
+
+```
+
+
+- clientX
+```
+clientX事件属性返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标.
+
+客户区指的是当前窗口
+  
+function show_coords(event){
+  x= event.clientX
+  y= event.clientY
+  alert("X coords: " + x + ",Y coords:" + y)
+}  
+
+<body onmousedown="show_coords(event)">
+  <p>Click in the document. An alert box will alert 
+the x and y coordinates of the mouse pointer.</p>
+</body>
+```
+
+
+- clientY
+```
+clientY 事件属性返回当事件被触发时鼠标指针向对于浏览器页面(客户区)的垂直坐标。
+
+客户区指的是当前窗口
+
+
+同上
+```
+
+
+- ctrlKey
+```
+ctrlKey 事件属性可返回一个布尔值，指示当事件发生时，Ctrl 键是否被按下并保持住。
+
+event.ctrlKey = true|false|1|0
+
+function isKeyPressed(event){
+  if(event.ctrlKey === 1){
+    alert("The CTRL key was pressed!")
+  }else {
+    alert("The CTRL key was NOT pressed!")
+  }
+}
+
+
+<body onmousedown="isKeyPressed(event)">
+  
+  <p>Click somewhere in the document.
+An alert box will tell you if you 
+pressed the CTRL key or not.</p>
+
+</body>
+```
+
+
+- metaKey
+```
+metaKey 事件属性可返回一个布尔值，指示当事件发生时
+
+function isKeyPressed(event){
+  if (event.metaKey==1)
+  {
+  alert("The meta key was pressed!")
+  }
+else
+  {
+  alert("The meta key was NOT pressed!")
+  }
+}
+
+
+<body onmousedown="isKeyPressed(event)">
+  
+<p>Click somewhere in the document.
+An alert box will tell you if you 
+pressed the meta key or not.</p>
+
+</body>
+```
+
+
+- relatedTarget
+```
+relatedTarget 事件属性返回与事件的目标节点相关的节点
+
+对于 mouseover 事件来说，该属性是鼠标指针移到目标节点上时所离开的那个节点。
+
+对于 mouseout 事件来说。该属性是离开目标时，鼠标指针进入的节点。
+
+对于其他类型的事件来说，这个属性没用.
+
+function getRelElement(event){
+  var txt = "The cursor just exited the";
+  txt = txt + event.relatedTarget.tagName + "element";
+  alert(txt);
+}
+
+<p onmouseover="getRelElement(event)"> Mouse over this paragraph</p>
+
+```
+
+
+- screenX
+```
+screenX 事件属性可返回事件发生时鼠标指针相对于屏幕的水平坐标.
+
+show_coords(event){
+  x=event.screenX
+  y=event.screenY
+  alert("X coords:" + x +", Y coords:" + y)
+}
+
+
+<p>Click in the document. An alert box will alert 
+the x and y coordinates of the cursor.</p>
+```
+
+
+- screenY
+```
+screenY 事件属性可返回事件发生时鼠标指针相对于屏幕的垂直坐标
+
+同上
+```
+
+
+- shiftKey
+```
+shiftKey 事件属性可返回一个布尔值，指示当事件发生时，“SHIFT”键是否被按下并保持住
+
+event.shiftKey = true|false|1|0
+
+isKeyPressed(event){
+   if (event.shiftKey==1)
+    {
+    alert("The shift key was pressed!")
+    }
+  else
+    {
+    alert("The shift key was NOT pressed!")
+    }
+}
+
+
+<body onmousedown="isKeyPressed(event)">
+  
+<p>Click somewhere in the document.
+An alert box will tell you if you 
+pressed the shift key or not.</p>
+
+</body>
+```
+
