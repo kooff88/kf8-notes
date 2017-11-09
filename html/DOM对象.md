@@ -460,3 +460,185 @@ pressed the shift key or not.</p>
 </body>
 ```
 
+
+### IE属性
+
+ 
+```
+cancelBubble 如果事件句柄阻止事件传播到包容对象，必须把该属性设为true
+
+fromElement 对于mouseover 和 mouseout事件，fromElement 引用移出鼠标的元素.
+
+keyCode 对于keypress事件, 该属性声明了被敲击的键生成的Unicode字符码。对于keydown和keyup事件，它指定了
+被敲击的键的虚拟键盘码。虚拟键盘码可能和使用的键盘的布局相关。
+
+offsetX,offsetY  发生事件的地点在事件源元素的坐标系中的x坐标和y坐标。
+
+returnValue  如果设置了该属性，它的值比事件句柄的返回值优先级高。把这个属性设置为false,可以取消
+发生事件的源元素的默认动作
+
+srcElement  对于生成事件的Window对象，Document对象或Element对象的引用。
+
+toElement 对于 mouseover和 mouseout事件，该属性引用移入鼠标的元素
+
+x,y  事件发生的位置的x坐标和y坐标，它们相对于用CSS动态定位的最内层包容元素。 
+
+```
+
+
+
+### 标准Event 属性
+
+下面列出2级 DOM事件标准定义的属性.   
+```
+  bubbles  返回布尔值，指示时间是否是起泡事件类型
+
+  cancelable  返回布尔值， 指示事件是否可拥有可取消的默认动作
+
+  currentTarget  返回其事件监听器触发该事件的元素。
+
+  eventPhase    返回事件传播的当前阶段。
+
+  target  返回触发此事件的元素(事件的目标节点).
+
+  timeStamp  返回事件生成的日期和时间。
+
+  type  返回当前Event 对象表示的事件的名称。
+```
+
+
+- bubbles 
+```
+getEventType(event){
+  alert(event.bubbles)
+}
+
+<body onmousedown="getEventType(event)">
+
+<p>Click somewhere in the document. 
+An alert box will tell if the event is a bubbling event.</p>
+
+</body>
+
+```
+
+
+- cancelable
+```
+isEventCancelable(event){
+  alert(event.cancelable)
+}
+
+
+<body onmousedown="isEventCancelable(event)">
+  
+<p>Click somewhere in the document. 
+An alert box will tell if the 
+event is a cancelable event.</p>
+
+</body>
+```
+
+
+- currentTarget
+```
+getEventTrigger(event){
+  x = event.currentTarget;
+  alert('The id of the triggered element:' + x.id)
+}
+
+<p id="p1" onmousedown="getEventTrigger(event)">
+Click on this paragraph. An alert box will
+show which element triggered the event.</p>
+```
+
+
+- target
+```
+target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素，文档或窗口.
+
+function getEventTrigger(event){ 
+  x=event.target; 
+  alert("The id of the triggered element: "
+  + x.id);
+}
+
+<p id="p1" onmousedown="getEventTrigger(event)">
+Click on this paragraph. An alert box will
+show which element triggered the event.</p>
+```
+
+
+- timeStamp
+```
+timeStamp 事件属性可返回一个时间戳。指示发生事件的日期和时间(从epoch开始的毫秒数)
+epoch 是一个事件参考点。在这里，它是客户机启动的时间。
+并非所有系统都提供该信息，因此，timeStamp属性并非对所有系统/事件都是可用的。 
+
+
+ps : Epoch指的是一个特定的时间：1970-01-01 00:00:00 UTC。
+
+
+showTimestamp(event){
+  var minutes = 1000 * 60
+  x = event.timeStamp;
+  alert(x/minutes)
+}
+
+
+<body onmousedown="showTimestamp(event)">
+  <p>Click in the document. An alert 
+  box will alert the timestamp.</p>
+</body>
+
+```
+
+
+- type
+```
+type 事件属性返回发生的事件的类型，即当前Event对象表示的事件的名称.
+它与注册的事件句柄同名，或者是事件句柄属性删除前缀“on”比如"submit","load"或"click"
+
+
+function getEventType(event){ 
+  alert(event.type);
+  }
+</script>
+</head>
+
+<body onmousedown="getEventType(event)">
+
+<p>Click somewhere in the document.
+An alert box will tell what event 
+type you triggered.</p>
+
+</body>
+```
+
+
+###  标准 Event 方法
+
+下面列出了2级 DOMd事件标准定义的方法。IE的事件模型不支持这些方法。
+
+- initEvent
+```
+event.iniEvent(eventType,canBubble,cancelable)
+
+eventType  字符串值。事件的类型
+canBubbe   事件是否起泡
+cancelable  是否可以用 preventDefault()方法取消事件
+
+```
+
+
+- preventDefault()
+```
+取下事件的默认动作
+
+该方法将通知 Web 浏览器不要执行与事件关联的默认动作(如果存在这样的动作)。
+例如,
+如果type属性是"submit",在事件传播的任意阶段可以调用任意的事件句柄，通过调用该方法，可以阻止提交表单。
+注意，如果Event对象cancelable 属性是false,那么久没有默认动作，或者不能阻止默认动作。
+无论哪种情况，调用该方法都没有作用.
+```
+
