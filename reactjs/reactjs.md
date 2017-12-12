@@ -17,6 +17,7 @@
 - [antd Button问题](#antd Button问题)
 - [antd datePicker问题](#antd datePicker问题)
 - [antd setFieldsValue问题](#antd setFieldsValue问题)
+- [pureComponent](#pureComponent)
 
 # 验证码点击切换
     ```
@@ -405,53 +406,53 @@
 # antd版本升级遇到各种问题
     ant design 1.0版本已经停止更新； 目前应使用2.0及以上版本
     项目升级过程遇到一些问题：
-        1:日期时间问题   timepicker属性 value,defaultvalue的type都改为moment 
-            ```
-            time = moment(time,"HH:mm");
-            ```
+1:日期时间问题   timepicker属性 value,defaultvalue的type都改为moment 
+  ```
+  time = moment(time,"HH:mm");
+  ```
         
-        2:获取节点属性     弃用getFieldProps   应用getFieldDecorator
-            ```
-            const sid={initialValue:id};
-            ...
-            {getFieldDecorator('sid',sid)(
-              <div>{id}</div>
-            )} 
-            ```
+2:获取节点属性     弃用getFieldProps   应用getFieldDecorator
+```
+const sid={initialValue:id};
+...
+{getFieldDecorator('sid',sid)(
+  <div>{id}</div>
+)} 
+  ```
 
-            弃用代码:
-            ```
-            const sidProps = getFieldProps({initialValue:id});
-             <Input {...sidProps}/>
-            ```
+弃用代码:
+```
+const sidProps = getFieldProps({initialValue:id});
+ <Input {...sidProps}/>
+```
 
-        3:Input.Search 在2.5版本及以上可以使用  
-            ```
-            <Search
-              id="search"
-              placeholder="关键词搜索"
-              style={{ width: 200 }}
-              onSearch={this.a.bind(this)}
-              onPressEnter={this.a.bind(this)}
-            />
-            ```
+3:Input.Search 在2.5版本及以上可以使用  
+```
+<Search
+  id="search"
+  placeholder="关键词搜索"
+  style={{ width: 200 }}
+  onSearch={this.a.bind(this)}
+  onPressEnter={this.a.bind(this)}
+/>
+```
 
-        4:Menu  height需写入
-            ```
-            <Menu theme="dark" mode="horizontal"
-               style={{lineHeight: '64px',height:64}}>
-            </Menu>
-            ```
-              
-        5: Warning: Each record in table should have a unique `key` prop,or set `rowKey` to an unique primary key
-            solve:
-            ```
-            antd2.0以上要求 Table 每条record都有`key`
-            对于取出的每一条record都加上`key`
-              for(var i = 0;i<data.length;i++){
-                data[i].key = i;
-              }
-            ```
+4:Menu  height需写入
+```
+<Menu theme="dark" mode="horizontal"
+   style={{lineHeight: '64px',height:64}}>
+</Menu>
+```
+      
+5: Warning: Each record in table should have a unique `key` prop,or set `rowKey` to an unique primary key
+    solve:
+```
+antd2.0以上要求 Table 每条record都有`key`
+对于取出的每一条record都加上`key`
+  for(var i = 0;i<data.length;i++){
+    data[i].key = i;
+  }
+```
 
 #  antd Button问题  
 
@@ -472,24 +473,82 @@
 
 #  antd datePicker问题  
 
-      ```
-      <RangePicker
-          defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}－－－－》》默认值格式 数组
-          format={dateFormat}
-      />
-      ``` 
+```
+<RangePicker
+    defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}－－－－》》默认值格式 数组
+    format={dateFormat}
+/>
+```
+
 
 #  antd setFieldsValue问题   
 
-      ```
-       onchangetimepicker(rule, value, callback){
-         console.log("--onchangetimepicker->")
-         const form = this.props.form;
-         form.setfieldsvalue({   －－－－－－－－－－－－－－－》》》》json格式
-           "time_end":value
-         })
-         this.setstate({
-           validatorTime:this.state.validatorTime || !!value
-         })
-       }
-      ```
+```
+ onchangetimepicker(rule, value, callback){
+   console.log("--onchangetimepicker->")
+   const form = this.props.form;
+   form.setfieldsvalue({   －－－－－－－－－－－－－－－》》》》json格式
+     "time_end":value
+   })
+   this.setstate({
+     validatorTime:this.state.validatorTime || !!value
+   })
+ }
+```
+
+
+## pureComponent
+
+-   默认渲染行为的问题
+```
+
+
+  在 React Component的生命周期中，有一个shouldComponentUpdate方法。这个方法默认返回值是true.
+  这意味了就算没有改变组件的props或者state,也会导致组件的重绘。这就是经常导致组件因为不相关数据的改变
+  导致的重绘，这极大的降低了React的渲染效率。比如下面的例子中，任何options的变化，甚至是其他数据的变化
+  都可能导致所有的cell重绘。
+
+
+  // Table Component
+  {
+    this.props.items.map(i =>{
+      <Cell data={i} option={this.props.options[i]}>
+    })
+  }
+
+  为了避免这个问题，我们可以在Cell中重写shouldComponentUpdate方法，只在option发生改变时进行重绘。
+
+  class Cell extends React.Component {
+    shouldComponentUpdate(nextProps,nextState){
+      if(this.props.option === nextProps.option){
+        return false;
+      }else{
+        return true;
+      }
+    }
+  }
+
+  这样每个Cell只有在关联option发生变化时进行重绘。
+
+```
+
+- 使用PureComponent与immutable.js  
+```
+  因为上面的情况十分通用，React创建了PureComponent组件创建了默认的shouldComponentUpdate行为。
+  这个默认的shouldComponentUpdate行为会一一比较props和state中所有的属性，只有当其中一项发生
+  改变时，才进行重绘。
+
+  需要注意的是，PureComponent 使用浅比较判断组件是否需要重绘。
+
+  因此，下面对数据的修改并不会导致重绘(假设Table也是PureComponent)
+
+  options.push(new Options())
+  options.splice(0,1)
+  options[i].name = 'Hello'
+
+  这些例子都是在原对象上进行修改，由于浅比较是比较指针的异同，所以会认为不需要进行重绘。
+
+  为了避免出现这些问题，推荐使用immutable.js.immutable.js会在每次对原对象进行添加，删除，修改使返回
+  新的对象实例。任何对数据的修改都会导致数据指针的变化。
+```
+
