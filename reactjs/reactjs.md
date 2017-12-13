@@ -18,6 +18,7 @@
 - [antd datePicker问题](#antd datePicker问题)
 - [antd setFieldsValue问题](#antd setFieldsValue问题)
 - [pureComponent](#pureComponent)
+- [dangerouslySetInnerHTMl](#dangerouslySetInnerHTMl)
 
 # 验证码点击切换
     ```
@@ -552,3 +553,28 @@ antd2.0以上要求 Table 每条record都有`key`
   新的对象实例。任何对数据的修改都会导致数据指针的变化。
 ```
 
+
+## dangerouslySetInnerHTMl
+
+```
+dangerouslySetInnerHTMl 是React标签的一个属性，类似于 angular的ng-bind;
+
+听说这个单词这么长，是故意的，应为有可能不合时宜的使用innerHTML会导致XSS攻击(然而我并不懂什么是XSS)，
+
+__html:DOM;
+
+
+通常写法:
+
+    var HelloMessage = React.createClass({
+      render:<div dangerouslySetInnerHTMl=({__html:'<h3>hahahaha</h3>'}) ></div>
+    })
+
+也可以插入字符串:
+
+    var HelloMessage = React.createClass({
+      render:<div dangerouslySetInnerHTMl={{__html:'hahahaha>'}} ></div>
+    })
+
+之所以是有2个{{}}，是因为第一{}代表jsx语法开始，第二个是代表dangerouslySetInnerHTML接收的是一个对象键值对
+```
