@@ -8,6 +8,7 @@
 -[req获取前台传来数据的集中方式](#req获取前台传来数据的集中方式)
 -[fs.readdirSync](#fs.readdirSync)
 -[createServer](#createServer)
+-[更新测试服务](#更新测试服务)
 
 ## Math...熟悉用法
 > Math.trunc()
@@ -131,5 +132,15 @@ requestListener 请求处理函数，自动添加到request事件，函数传递
     }).listen(3000);
 ```
 
+## 更新测试服务
 
+```
+    step1 :  ssh root@192.168.666.666
+            (需要输入 链接密码 : ******)
 
+    step2 :  cd /home/项目
+
+    step3 :  git pull 
+            (更新测试服代码)
+
+```
