@@ -12,6 +12,7 @@
 - [获取文件类型](#获取文件类型)
 - [preventDefault](#preventDefault)
 - [case穿透](#case穿透)
+- [generator函数](#generator函数)
 
 ## Promise(es6)
 
@@ -209,3 +210,24 @@ file.mimetype
 
 case穿透就是从条件语句符合的case开始执行，直到读取到break结束。  
 没有break的话就会一直读取下一个case，直到该switch语句结束
+
+
+## generator函数
+
+
+```
+  function* countAppSales(){
+    var saleList = [3,7,5];
+    for (var i=0; i <saleList.length; i++) {
+      yield saleList[i];
+    }
+  }
+
+  var appleStore = countAppleSales()  // Gennerator {}
+
+  appleStore.next();     //  { value: 3, done: false }
+  appleStore.next();     //  { value: 7, done: false }
+  appleStore.next();     //  { value: 5, done: false }
+  appleStore.next();     //  { value: undefined, done: true }
+
+```
