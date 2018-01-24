@@ -1,6 +1,6 @@
 # StyleSheet
 
-[StyleSheet.hairlineWidth](#hairlineWidth)
+- [StyleSheet.hairlineWidth](#hairlineWidth)
 
 
 StyleSheet提供了哟中类似CSS样式表的抽象。  
