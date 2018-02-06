@@ -66,6 +66,8 @@ fs模块方法介绍，方法结尾为Sync的为同步方法，反之为异步�
 | fs.readFileSync(file[,options]) | 读取文件  |
 | fs.readlink(path[,options],callback) | 读取软链接信息  |
 | fs.readlinkSync(path[,options]) | 读取软链接信息  |
+| fs.realpath(path[, options], callback) | 获取文件真实路径  |
+| fs.realpathSync(path[, options]) | 获取文件真实路径  |
 | fs.rename(oldPath,newPath,callback) | 重命名路径  |
 | fs.renameSync(oldPath,newPath) | 重命名路径  |
 | fs.rmdir(path,callback) | 删除文件目录 |
