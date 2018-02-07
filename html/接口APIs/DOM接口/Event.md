@@ -1,7 +1,9 @@
 # Event
 
-事件接口表示发生在DOM中的任何事件；有些是用户生成的（比去鼠标或键盘事件），而另一些则是由api生成的（比如显示动画已完成运行的事件，视频暂停，等等）。   
-有许多类型的事件，其中一些使用基于主事件接口的其他接口。事件本身包含所有事件所共有的属性和方法。  
+Event接口表示在DOM中发生的任何事件；一些是用户生成的（例如鼠标或键盘事件），而其其他由API生成（例如指示动画已经完成运行的事件，视频已被暂停等等）。  
+有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。  
+
+
 
 ## 基于Event的接口
 
@@ -21,6 +23,33 @@ TouchEvent  |  TrackEvent  |  TransitionEvent  |  UIEvent
 UserProximityEvent  |  WebGLContextEvent  |  WeelEvent  
 
 ```
+
+## 注册事件监听器
+
+有三种方式可以为DOM元素注册事件处理函数。  
+
+> EventTarget.addEventListener  
+
+```
+  // Assuming myButton is a button element
+  MyButton.addEventListener('click',funcion(){console.log('Hello world')},false);
+```
+
+您可以在现代web页面中使用该方法。  
+
+```
+注意： Internet Explorer 6-8 并不支持这个方法，而是提供了类似的element.attachEvent API。
+如果要进行跨浏览器使用，请考虑使用有效的JavaScript库。  
+```
+
+
+## HTML属性
+
+> <button onClick="alert('Hello world!')" />  
+
+在属性中的JavaScript代码，是通过event参数传入Event对象的。   
+
+我们应该避免使用这种方式。因为它会使标记数量变大，而可读性却较差。内容/结构和行为之间没有很好的分离，使得在处理bug时非常困难。  
 
 
 
