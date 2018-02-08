@@ -5,6 +5,9 @@
 
 # webpack
 
+本质上，webpack是一个现代 JavaScript应用程序的 静态模块打包器(module bundler)。当webpack处理应用程序时,  
+它会递归地构建一个依赖关系图，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个bundle。  
+
 - 一个常见的Webpack配置文件  
 
 ```
