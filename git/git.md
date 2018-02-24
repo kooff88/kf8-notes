@@ -1,20 +1,14 @@
 # 目录
 
-- [git加载项目](#git加载项目)
-
-- [git第一次加载项目](#git第一次加载项目)
-
-- [git提交任务](#git提交任务)
-
-- [github与gitlab生成密钥](#github与gitlab生成密钥)
-
-- [github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)
-
-- [github代码提交](#github代码提交)
-
-- [gitlog日志](#gitlog日志)
-
-- [submodule](#submodule)
+- [git加载项目](#git加载项目)  
+- [git第一次加载项目](#git第一次加载项目)  
+- [git提交任务](#git提交任务)  
+- [github与gitlab生成密钥](#github与gitlab生成密钥)  
+- [github与gitlab同一电脑同时应用](#github与gitlab同一电脑同时应用)  
+- [github代码提交](#github代码提交)  
+- [gitlog日志](#gitlog日志)  
+- [submodule](#submodule)  
+- [ssh-add](#ssh-add)  
 
 # git简单笔记
 
@@ -77,6 +71,7 @@
     config      id_rsa      id_rsa.pub  id_rsa1     id_rsa1.pub known_hosts
 
     cat  id_rsa.pub (通过cat 命令打开密钥查看)
+
 
 
 # github与gitlab同一电脑同时应用
@@ -172,3 +167,26 @@
  git submodule foreach --recursive git submodule update
 ```
 
+
+## ssh-add
+
+ssh-add 命令是把专用密钥添加到ssh-agent的高速缓存中。  
+
+该命令位置在 /usr/bin/ssh-add。
+
+
+
+```
+// 选项
+
+    -D：删除ssh-agent中的所有密钥. 
+    -d：从ssh-agent中的删除密钥 
+    -e pkcs11：删除PKCS#11共享库pkcs1提供的钥匙。 
+    -s pkcs11：添加PKCS#11共享库pkcs1提供的钥匙。 
+    -L：显示ssh-agent中的公钥 
+    -l：显示ssh-agent中的密钥 
+    -t life：对加载的密钥设置超时时间，超时ssh-agent将自动卸载密钥 
+    -X：对ssh-agent进行解锁 
+    -x：对ssh-agent进行加锁
+
+```
