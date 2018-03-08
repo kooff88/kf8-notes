@@ -112,7 +112,7 @@
             id_rsa.pub 
 
 
-    添加 config
+    添加 config （主要原因：创建密钥用了其他名称命名，此情况下必须使用config !）
         在~/.ssh 下添加config 配置文件
     
     配置文件内容：
