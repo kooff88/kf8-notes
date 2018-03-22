@@ -13,6 +13,7 @@
 - [preventDefault](#preventDefault)
 - [case穿透](#case穿透)
 - [generator函数](#generator函数)
+- [Object.entries()](Object.entries())
 
 ## Promise(es6)
 
@@ -229,5 +230,12 @@ case穿透就是从条件语句符合的case开始执行，直到读取到break�
   appleStore.next();     //  { value: 7, done: false }
   appleStore.next();     //  { value: 5, done: false }
   appleStore.next();     //  { value: undefined, done: true }
+
+```
+
+## Object.entries()
+
+```
+a = Object.entries({ name: 'li', age: 26 });  // [ ["name","li"], ["age": 26] ]
 
 ```
