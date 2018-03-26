@@ -5,6 +5,7 @@
 - [map](#map)
 - [es6扩展运算符](#es6扩展运算符)
 - [隐式返回值简写](#隐式返回值简写)
+- [Object.is()](#Object.is())
 
 # for-of遍历
 
@@ -507,6 +508,23 @@ function json2Map(json){
 
 
 
+## Object.is()
+
+
+Object.is(),其行为与 === 基本一致，不过有两处不同：  
+
+1. +0不等于-0  
+2. NaN等于自身  
+
+```js
+  +0 === -0  // true
+  NaN === NaN  // false
+
+
+  Object.is(+0, -0)  // false
+  Object.is ( NaN,NaN )  // true
+
+```
 
 
 
