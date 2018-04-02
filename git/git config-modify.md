@@ -2,6 +2,7 @@
 
 -[git config --list](#git config --list)
 -[git config](#git config)
+-[ssl验证跳过](#ssl验证跳过)
 
 
 ## git config --list
@@ -43,3 +44,6 @@
   git config --global core.autocrlf input # 提交到git是自动将换行符转换为lf
   ```
   
+## ssl验证跳过 
+
+git config --global http.sslVerify false
