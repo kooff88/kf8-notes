@@ -43,6 +43,13 @@
     git clone git@git.... 进行项目clone 
     subl ./ 用sublime打开项目 查看
 
+
+    如果报错:
+    The project you were looking for could not be found.
+    repository 'https://.......' not found
+
+    解决方案: git clone https://username:password@gitlab.com/xxx/xxx.git
+
 # git提交任务
 
     git add . 
