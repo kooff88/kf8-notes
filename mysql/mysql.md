@@ -167,6 +167,23 @@ Mac OS X - 重置 MySQL Root 密码
 ```
 
 
+另一种修改密码
+
+```
+    1. 先停止mysql
+
+    2. cd /usr/local/mysql/bin/
+       sudo su
+       ./mysqld_safe --skip-grant-tables &
+    3.   ./mysql
+        FLUSH PRIVILEGES;
+        SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的新密码');
+        至此，密码修改完成，可以成功登陆。
+
+    4.  测试。  输入 /usr/local/MySQL/bin/mysql -u root -p    
+
+```
+
 
     
 
