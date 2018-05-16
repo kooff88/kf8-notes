@@ -13,6 +13,7 @@
 - [更新](#更新)
 - [upsert](#upsert)
 - [MySQL 5.7.9版本sql_mode=only_full_group_by问题](#MySQL 5.7.9版本sql_mode=only_full_group_by问题)
+- [mysql8caching-sha2-password问题](#mysql8caching-sha2-password问题)
 
 
 # 索引
@@ -264,4 +265,21 @@ SELECT @@GLOBAL.sql_mode 或 SELECT @@sql_mode
 
 SET sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 ```
+
+
+## mysql8caching-sha2-password问题
+
+```
+  1. ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE  NEVER; # 修改加密规则
+
+  2. ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; 
+
+  3. FLUSH PRIVILEGES; # 刷新权限
+
+  4. 再重置下密码： alter user 'root'@'localhost' identified by '123456';
+```
+
+
+
+
 
