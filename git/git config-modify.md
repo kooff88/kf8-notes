@@ -47,3 +47,8 @@
 ## ssl验证跳过 
 
 git config --global http.sslVerify false
+
+
+## git 操作不用每次输入用户名
+
+git config --global credential.helper store  
