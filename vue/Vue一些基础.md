@@ -2,6 +2,7 @@
 
 -[v-show](#v-show)  
 -[v-on](#v-on)  
+-[v-once](#v-once)  
 
 ## v-show
  
@@ -53,3 +54,36 @@
 </script>
 
 ```
+
+## v-once
+
+通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这回影响到该节点上所有的数据绑定。  
+
+```html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src=""https://unpkg.com/vue></script>
+</head>
+<body>
+	<div id="app">
+		<p>可以改变：{{ msg }}</p>
+		<p v-once>不可以改变{{ msg1 }}</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				msg: 'Hello Vue!',
+				msg: 'Hello Vue11'
+			}
+		})
+	</script>
+</body>
+</html>
+```
+
+
+控制台输入app.msg = 'hello' 会改变第一行的字段，输入 app.msg1 = 'hello' 不会改变第二行的字段。 
