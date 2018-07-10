@@ -31,7 +31,6 @@
   git config --global user.name "zp"
   git config --global user.email zp@gmail.com
 
-
   非全局修改
 
   git config  user.name "zp"
