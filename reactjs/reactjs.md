@@ -23,7 +23,6 @@
 # 验证码点击切换
     ```
     ...
-
     constructor(props) {
         super(props);
         this.state={
