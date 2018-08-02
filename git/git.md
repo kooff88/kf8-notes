@@ -70,7 +70,6 @@
        git remote -v
        git remote add origin  git@140.206.185.170:666/wabg-server.git (这是github/gitlab中ssh地址，复制过来即可)
 
-
     other:
     ~   最外路径
     .ssh 进入密钥文件夹
