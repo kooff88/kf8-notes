@@ -13,7 +13,8 @@
 - [preventDefault](#preventDefault)
 - [case穿透](#case穿透)
 - [generator函数](#generator函数)
-- [Object.entries()](Object.entries())
+- [Object.entries()](#Object.entries())
+- [Infinity属性](#Infinity属性)
 
 ## Promise(es6)
 
@@ -239,3 +240,31 @@ case穿透就是从条件语句符合的case开始执行，直到读取到break�
 a = Object.entries({ name: 'li', age: 26 });  // [ ["name","li"], ["age": 26] ]
 
 ```
+
+## Infinity属性
+
+```
+  Infinity 属性用于存放表示正无穷大的数值
+
+  说明: 无法使用for/in 循环来枚举Infinity属性，也不能用delete运算符来删除它。 
+  Infinity不是常量，可以把它设置为其他值。 
+
+
+  实例：  
+  
+  <script type="text/javascript">
+
+  var t1=1.7976931348623157E+10308
+  document.write(t1)  // Infinity
+ 
+  document.write("<br />")
+
+  var t2=-1.7976931348623157E+10308
+  document.write(t2)  // -Infinity
+
+  </script>
+
+```
+
+
+
