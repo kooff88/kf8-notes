@@ -64,3 +64,76 @@ var ancestorHandler = function (e){
 
  document.querySelector('#child').addEventListener('click',childHandler,true);//注意第三个参数 ，注册了一个在捕获阶段的事件句柄
 ```
+
+## 使用
+
+html
+```
+<ul id="ul">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+
+```
+
+如果给上面的标签li 绑定事件，例如点击改变背景，正常情况下我们可以这样写:  
+
+```js
+  var li = document.querySelectorAll('#ul > li');
+
+  for (var i =0; i< li.length; i++ ) {
+    li[i].index = i;
+    li[i].onclick= function (){
+      this.style.background = 'red';
+    }
+  }
+
+```
+
+当然这样也是没有什么问题的，但是如果 li非常多，那么利用事件冒泡就会方便很多，实现方法就是在li的父元素上绑定事件：  
+
+```js
+  var ul = document.querySelector('#ul');
+  ul.addEventListener('click',function(e){
+    var ev= e || event;
+    var li = ev.target;
+    li.style.background = 'blue';
+    console.log('ev.currentTarget'); // 事件监听的对象，ul
+
+  }, false);
+
+```
+类似 jquery事件委托
+```js
+  
+  $('#ul').on('click', 'li', function(){
+    $(this).css('background', 'blue');
+  })
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
