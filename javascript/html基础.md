@@ -1,7 +1,4 @@
 # 目录  
-- [采用正则表达式获取地址栏参数](#采用正则表达式获取地址栏参数)
-- [获取网址中数字](#获取网址中数字)
-- [获取url参数](#获取url参数)
 - [event.clientX,event.clientY](#event.clientX,event.clientY)
 - [window.scrollTo](#window.scrollTo)
 - [水平滚动条](#水平滚动条)
@@ -17,46 +14,8 @@
 - [元素节点，属性节点，文本节点](#元素节点，属性节点，文本节点)
 - [contenteditable](#contenteditable)
 - [事件句柄](#事件句柄)
-- [导航栏传中文参数](#导航栏传中文参数)
-
-## 采用正则表达式获取地址栏参数
-
-```
-  
-function GetQueryString(name){
-   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-   var r = window.location.search.substr(1).match(reg);
-   if(r!=null)return  unescape(r[2]); return null;
-}
- 
-// 调用方法
-alert(GetQueryString("参数名1"));
-alert(GetQueryString("参数名2"));
-alert(GetQueryString("参数名3"));
-```
-
-## 获取url参数
-```
-function getUrlParam(name){
-  var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-  if (r!=null) return unescape(r[2]); return null; //返回参数值
-} 
-```
 
 
-
-## 获取网址中数字
-
-```
-  var str=location.pathname;
-  var  m=str.match(/\/aaa\/([0-9]+)/);
-```
-
-```
-  react : (在框架配置好)
-  this.props.match.params.id,
-  
 ```
 
 
