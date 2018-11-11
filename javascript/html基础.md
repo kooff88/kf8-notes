@@ -19,15 +19,7 @@
 ```
 
 
-## event.clientX,event.clientY
 
-- 事件属性   
-  返回当事件被触发时鼠标指针向对于浏览器页面(客户区)的水平（垂直）坐标。  
-
-```
-  event.clientX
-  event.clientY
-```
 
 
 # window.scrollTo
