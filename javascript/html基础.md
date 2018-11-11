@@ -1,7 +1,4 @@
 # 目录  
-- [event.clientX,event.clientY](#event.clientX,event.clientY)
-- [window.scrollTo](#window.scrollTo)
-- [水平滚动条](#水平滚动条)
 - [CRLF](#CRLF)
 - [thead,tbody,tfoot](#thead,tbody,tfoot)
 - [colgroup标签](#colgroup标签)
@@ -16,29 +13,6 @@
 - [事件句柄](#事件句柄)
 
 
-```
-
-
-
-
-
-# window.scrollTo
-
-```
-  function scrollWindow(){
-    window.scrollTo(100,500); //滚动到指定的坐标 x=100 y=500位置
-  }
-```
-
-
-# 水平滚动条
-
-```
- css: 
-    overflow-x:scroll
-    overflow-x: auto
-    overflow-y:hidden
-```
 
 
 ## CRLF
