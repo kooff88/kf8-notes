@@ -30,7 +30,7 @@
 ```
 
 
-- SFC模式  
+- SFC模式 (无状态模式)
 ```
 import React from 'react';
 
