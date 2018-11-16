@@ -24,7 +24,6 @@ class Rectangle extends React.Component {
     )
   }
 
-
   render() {
     return (
       <Rect
